@@ -27,7 +27,7 @@
                     },
                     fontFamily: {
                         serifTitle: ['Cinzel', 'serif'],
-                        serifBody: ['Cormorant Gramamond', 'serif'],
+                        serifBody: ['Cormorant Garamond', 'serif'],
                         sans: ['Montserrat', 'sans-serif'],
                     }
                 }
@@ -253,9 +253,9 @@
                     </div>
                 </div>
 
-                <!-- Wedding Date Text -->
+                <!-- Wedding Date Text (Updated to November 21) -->
                 <p id="wedding-date-display" class="font-serifTitle text-lg text-neutralDark tracking-wider mt-5 font-semibold">
-                    Sábado, 12 de Diciembre de 2026
+                    Sábado, 21 de Noviembre de 2026
                 </p>
             </div>
         </section>
@@ -633,10 +633,10 @@
                 Usa este panel interactivo para personalizar la fecha de la boda, el contacto y la música. ¡Los cambios se guardan localmente en tu navegador de forma segura!
             </p>
 
-            <!-- Set Target Wedding Date -->
+            <!-- Set Target Wedding Date (Updated value to November 21) -->
             <div>
                 <label for="set-wedding-date" class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold mb-1">Fecha de la Boda</label>
-                <input type="datetime-local" id="set-wedding-date" value="2026-12-12T19:30"
+                <input type="datetime-local" id="set-wedding-date" value="2026-11-21T19:30"
                        class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
             </div>
 
@@ -720,9 +720,9 @@
 
     <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
-        // CONFIGURACIÓN MADRE (Fijar los datos por defecto para el despliegue en GitHub)
+        // CONFIGURACIÓN MADRE (Fijada al 21 de Noviembre de 2026)
         let weddingConfig = {
-            weddingDate: "2026-12-12T19:30:00",
+            weddingDate: "2026-11-21T19:30:00",
             rsvpDeadline: "2026-11-14",
             rsvpPhone: "441011723",
             heroImg: "https://i.imgur.com/rWrSAKy.jpg",
@@ -791,14 +791,17 @@
             applyConfigToUI();
         }
 
-        // Apply visual config instantly to DOM
+        // Apply visual config instantly to DOM (With Safari Mobile strict-date compatibility fix)
         function applyConfigToUI() {
             const dOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             
-            const parsedWedding = new Date(weddingConfig.weddingDate);
+            // Format replacement: Convert dashed ISO string "YYYY-MM-DD" to universally parsed "YYYY/MM/DD"
+            const safeWeddingStr = weddingConfig.weddingDate.replace(/-/g, '/').replace('T', ' ');
+            const parsedWedding = new Date(safeWeddingStr);
             document.getElementById('wedding-date-display').innerText = parsedWedding.toLocaleDateString('es-ES', dOptions);
 
-            const parsedDeadline = new Date(weddingConfig.rsvpDeadline + "T00:00:00");
+            const safeDeadlineStr = weddingConfig.rsvpDeadline.replace(/-/g, '/');
+            const parsedDeadline = new Date(safeDeadlineStr);
             document.getElementById('rsvp-deadline-text').innerText = parsedDeadline.toLocaleDateString('es-ES', dOptions);
 
             document.getElementById('ceremony-venue-display').innerText = weddingConfig.ceremonyVenue;
@@ -931,7 +934,7 @@
             }
         }
 
-        // Countdown Timer Logic
+        // Countdown Timer Logic (Safari Mobile strict-date compatible)
         function initCountdown() {
             if (countdownInterval) clearInterval(countdownInterval);
 
@@ -940,7 +943,8 @@
             const minsElem = document.getElementById('countdown-minutes');
             const secsElem = document.getElementById('countdown-seconds');
 
-            const targetDate = new Date(weddingConfig.weddingDate).getTime();
+            const safeWeddingStr = weddingConfig.weddingDate.replace(/-/g, '/').replace('T', ' ');
+            const targetDate = new Date(safeWeddingStr).getTime();
 
             function updateTimer() {
                 const now = new Date().getTime();
@@ -989,6 +993,11 @@
 
         function nextGallerySlide() {
             currentGalleryIndex = (currentGalleryIndex + 1) % totalGallerySlides;
+            updateGalleryView();
+        }
+
+        function prevGallerySlide() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + totalGallerySlides) % totalGallerySlides;
             updateGalleryView();
         }
 
@@ -1045,7 +1054,8 @@
             const details = encodeURIComponent("Boda de Fanny Michelle Guzman Rubio & Luis Barajas Martínez. Recepción 19:30 Hrs. ¡Nos vemos ahí!");
             const location = encodeURIComponent("Salón Camilas Eventos, Calz. Ventura Puente 1661, Morelia, Michoacán");
             
-            const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261212T193000/20261213T010000&details=${details}&location=${location}`;
+            // Dates aligned with November 21
+            const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261121T193000/20261122T010000&details=${details}&location=${location}`;
             
             window.open(gCalUrl, '_blank');
         }
@@ -1055,7 +1065,7 @@
             const modal = document.getElementById('settings-modal');
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
-                // Fill settings inputs dynamically with config state
+                // Fill settings values
                 document.getElementById('set-wedding-date').value = weddingConfig.weddingDate.substring(0, 16);
                 document.getElementById('set-rsvp-deadline').value = weddingConfig.rsvpDeadline;
                 document.getElementById('set-rsvp-phone').value = weddingConfig.rsvpPhone;

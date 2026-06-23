@@ -27,7 +27,7 @@
                     },
                     fontFamily: {
                         serifTitle: ['Cinzel', 'serif'],
-                        serifBody: ['Cormorant Garamond', 'serif'],
+                        serifBody: ['Cormorant Gramamond', 'serif'],
                         sans: ['Montserrat', 'sans-serif'],
                     }
                 }
@@ -169,7 +169,7 @@
             </button>
         </div>
 
-        <!-- 1. FULLSCREEN PORTADA / HERO HEADER SECTION (NOMBRES ARRIBA PARA EVITAR HACER OVERLAP EN CARAS) -->
+        <!-- 1. FULLSCREEN PORTADA / HERO HEADER SECTION -->
         <header class="relative w-full h-screen flex flex-col justify-between items-center text-center overflow-hidden z-20">
             <!-- Fullscreen background image with subtle scale transition -->
             <div id="hero-img-bg" class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 scale-100" style="background-image: url('https://i.imgur.com/rWrSAKy.jpg');"></div>
@@ -587,15 +587,14 @@
                            class="w-full px-4 py-3 rounded-xl border border-neutralSand bg-neutralWhite font-sans text-sm focus:outline-none focus:ring-2 focus:ring-neutralSage/50 focus:border-neutralSage text-neutralDark transition-all">
                 </div>
 
-                <!-- Number of Guests Selected -->
+                <!-- Number of Guests Selected (Dynamic Header Label added) -->
                 <div>
-                    <label for="rsvp-guests" class="block font-sans text-[11px] uppercase tracking-widest text-neutralSage font-bold mb-1.5">Número de Pases que necesitas</label>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label for="rsvp-guests" class="block font-sans text-[11px] uppercase tracking-widest text-neutralSage font-bold">Número de Pases que necesitas</label>
+                        <span id="passes-allocation-label" class="hidden text-[9px] uppercase bg-neutralSage/10 text-neutralSage font-bold px-2 py-0.5 rounded-full"></span>
+                    </div>
                     <select id="rsvp-guests" class="w-full px-4 py-3 rounded-xl border border-neutralSand bg-neutralWhite font-sans text-sm focus:outline-none focus:ring-2 focus:ring-neutralSage/50 focus:border-neutralSage text-neutralDark transition-all">
-                        <option value="1">1 Pase</option>
-                        <option value="2" selected>2 Pases</option>
-                        <option value="3">3 Pases</option>
-                        <option value="4">4 Pases</option>
-                        <option value="5">5 Pases</option>
+                        <!-- Options generated dynamically by script -->
                     </select>
                 </div>
 
@@ -670,18 +669,38 @@
                 </div>
             </div>
 
-            <!-- VIP URL GENERATOR SECTION -->
-            <div class="bg-neutralCream/40 border border-neutralSand/50 rounded-2xl p-4 space-y-2">
-                <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralDark font-bold text-center">Generador de Enlaces (Copiar Enlace)</span>
-                <p class="font-sans text-[10px] text-neutralDark/70 text-center">Envía el enlace correspondiente a cada invitado por WhatsApp:</p>
-                <div class="grid grid-cols-2 gap-2 pt-1">
-                    <button onclick="copyGeneratedLink(false)" class="bg-neutralWhite border border-neutralSand text-neutralDark px-2 py-2 rounded-lg text-[9px] font-bold uppercase hover:bg-neutralCream transition-all">
-                        <i class="fa-solid fa-user"></i> Solo Recepción
-                    </button>
-                    <button onclick="copyGeneratedLink(true)" class="bg-neutralSage text-white px-2 py-2 rounded-lg text-[9px] font-bold uppercase hover:bg-neutralDark transition-all">
-                        <i class="fa-solid fa-crown text-amber-200"></i> Con Ceremonia
-                    </button>
+            <!-- DYNAMIC LINK GENERATOR (Copiar Enlace con pases + ceremonia) -->
+            <div class="bg-neutralCream/40 border border-neutralSand/50 rounded-2xl p-4 space-y-3">
+                <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralDark font-bold text-center">Generador de Enlaces Personalizados</span>
+                
+                <div>
+                    <label for="gen-passes" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Pases para esta familia</label>
+                    <select id="gen-passes" class="w-full px-3 py-1.5 rounded-lg border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                        <option value="0">Estándar (1 a 5 pases)</option>
+                        <option value="1">1 Pase asignado</option>
+                        <option value="2">2 Pases asignados</option>
+                        <option value="3">3 Pases asignados</option>
+                        <option value="4">4 Pases asignados</option>
+                        <option value="5">5 Pases asignados</option>
+                        <option value="6">6 Pases asignados</option>
+                        <option value="7">7 Pases asignados</option>
+                        <option value="8">8 Pases asignados</option>
+                        <option value="9">9 Pases asignados</option>
+                        <option value="10">10 Pases asignados</option>
+                    </select>
                 </div>
+
+                <div>
+                    <label for="gen-ceremony" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">¿Invitar a la Ceremonia Religiosa?</label>
+                    <select id="gen-ceremony" class="w-full px-3 py-1.5 rounded-lg border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                        <option value="no">No (Solo Recepción)</option>
+                        <option value="yes" selected>Sí (Ceremonia + Recepción)</option>
+                    </select>
+                </div>
+
+                <button onclick="generateCustomLink()" class="w-full bg-neutralSage text-white px-3 py-2 rounded-lg text-xs font-bold uppercase hover:bg-neutralDark transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-link"></i> Generar y Copiar Enlace
+                </button>
             </div>
 
             <!-- Set Background Music -->
@@ -701,7 +720,7 @@
 
     <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
-        // CONFIGURACIÓN MADRE (Puedes editar estos valores directamente en tu código para fijar los datos en GitHub)
+        // CONFIGURACIÓN MADRE (Fijar los datos por defecto para el despliegue en GitHub)
         let weddingConfig = {
             weddingDate: "2026-12-12T19:30:00",
             rsvpDeadline: "2026-11-14",
@@ -736,7 +755,7 @@
             loadSavedSettings();
             initLeaves();
             initCountdown();
-            checkCeremonyParameter();
+            checkGuestParameters();
             checkAdminParameter();
             prepareAudioSource();
         });
@@ -744,7 +763,6 @@
         // Convert Dropbox links cleanly for bypass CORS issue in GitHub Pages stream play
         function getCleanAudioUrl(rawUrl) {
             if (rawUrl.includes("dropbox.com")) {
-                // Replace www.dropbox.com or dropbox.com with dl.dropboxusercontent.com and set dl=1
                 let cleanUrl = rawUrl.replace("www.dropbox.com", "dl.dropboxusercontent.com");
                 cleanUrl = cleanUrl.replace("dropbox.com", "dl.dropboxusercontent.com");
                 cleanUrl = cleanUrl.replace("dl=0", "dl=1");
@@ -770,7 +788,6 @@
                     console.error("No se pudo cargar la configuración de localStorage", e);
                 }
             }
-            // Update UI with current loaded states
             applyConfigToUI();
         }
 
@@ -791,9 +808,11 @@
             document.getElementById('countdown-section').style.backgroundImage = `url('${weddingConfig.countdownBg}')`;
         }
 
-        // Detect if the URL contains "?c=1" to reveal religious ceremony
-        function checkCeremonyParameter() {
+        // Detect URL parameters for Ceremony (?c=1) & Dynamic Passes (?p=x)
+        function checkGuestParameters() {
             const urlParams = new URLSearchParams(window.location.search);
+            
+            // 1. Check Ceremony display
             const showCeremony = urlParams.get('c') === '1' || urlParams.get('ceremonia') === 'true';
             const ceremonyCard = document.getElementById('religious-ceremony-card');
             
@@ -801,6 +820,42 @@
                 ceremonyCard.classList.remove('hidden');
             } else {
                 ceremonyCard.classList.add('hidden');
+            }
+
+            // 2. Check Passes allocation limit
+            const passesLimit = parseInt(urlParams.get('p'));
+            const guestsSelect = document.getElementById('rsvp-guests');
+            const passesLabel = document.getElementById('passes-allocation-label');
+
+            if (!isNaN(passesLimit) && passesLimit > 0) {
+                guestsSelect.innerHTML = '';
+                // Dynamically build selection list up to passes limit
+                for (let i = 1; i <= passesLimit; i++) {
+                    const opt = document.createElement('option');
+                    opt.value = i;
+                    opt.textContent = `${i} ${i === 1 ? 'Pase' : 'Pases'}`;
+                    if (i === passesLimit) {
+                        opt.selected = true; // Pre-select maximum
+                    }
+                    guestsSelect.appendChild(opt);
+                }
+                // Show personalized badge in form header
+                if (passesLabel) {
+                    passesLabel.textContent = `Tienes ${passesLimit} ${passesLimit === 1 ? 'pase reservado' : 'pases reservados'}`;
+                    passesLabel.classList.remove('hidden');
+                }
+            } else {
+                // Fallback / Default configuration (1 to 5)
+                guestsSelect.innerHTML = `
+                    <option value="1">1 Pase</option>
+                    <option value="2" selected>2 Pases</option>
+                    <option value="3">3 Pases</option>
+                    <option value="4">4 Pases</option>
+                    <option value="5">5 Pases</option>
+                `;
+                if (passesLabel) {
+                    passesLabel.classList.add('hidden');
+                }
             }
         }
 
@@ -937,11 +992,6 @@
             updateGalleryView();
         }
 
-        function prevGallerySlide() {
-            currentGalleryIndex = (currentGalleryIndex - 1 + totalGallerySlides) % totalGallerySlides;
-            updateGalleryView();
-        }
-
         // Copy Gift Registry Code
         function copyRegistryCode() {
             const eventCode = document.getElementById('event-number').innerText;
@@ -1017,11 +1067,25 @@
             }
         }
 
-        // Smart Link Copier for Ceremony vs Reception ONLY
-        function copyGeneratedLink(isVip) {
-            // Get base URL without existing query params
+        // Advanced Personal Link Generator for Passes + Ceremony control
+        function generateCustomLink() {
             const baseUrl = window.location.origin + window.location.pathname;
-            const finalUrl = isVip ? `${baseUrl}?c=1` : baseUrl;
+            const passes = document.getElementById('gen-passes').value;
+            const inviteCeremony = document.getElementById('gen-ceremony').value;
+            
+            let queryParams = [];
+            
+            // If specific passes are assigned, add 'p' parameter
+            if (passes !== "0") {
+                queryParams.push(`p=${passes}`);
+            }
+            // If ceremony invitation is set to Yes, add 'c=1'
+            if (inviteCeremony === "yes") {
+                queryParams.push(`c=1`);
+            }
+            
+            const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
+            const finalUrl = baseUrl + queryString;
 
             const input = document.createElement('input');
             input.setAttribute('value', finalUrl);
@@ -1030,7 +1094,19 @@
             document.execCommand('copy');
             document.body.removeChild(input);
 
-            showToast(isVip ? "¡Enlace VIP (Con Ceremonia) Copiado!" : "¡Enlace Estándar Copiado!");
+            // Detailed confirmation toast
+            let toastMsg = "¡Enlace copiado!";
+            if (passes !== "0" && inviteCeremony === "yes") {
+                toastMsg = `¡Copiado! Enlace con ${passes} ${passes === "1" ? 'pase' : 'pases'} + Ceremonia`;
+            } else if (passes !== "0") {
+                toastMsg = `¡Copiado! Enlace con ${passes} ${passes === "1" ? 'pase' : 'pases'} (Solo Recepción)`;
+            } else if (inviteCeremony === "yes") {
+                toastMsg = "¡Copiado! Enlace estándar + Ceremonia";
+            } else {
+                toastMsg = "¡Copiado! Enlace estándar (Solo Recepción)";
+            }
+
+            showToast(toastMsg);
         }
 
         // Apply configuration and save persistently to localStorage (Excellent for GitHub hosting!)

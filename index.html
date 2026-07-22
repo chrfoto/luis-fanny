@@ -35,11 +35,9 @@
         }
     </script>
     <style>
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-        /* Custom scrollbar matching sage green */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -50,7 +48,6 @@
             background: #989F8D;
             border-radius: 3px;
         }
-        /* Elegant Animations */
         .fade-in-up {
             animation: fadeInUp 1.2s ease-out forwards;
         }
@@ -64,7 +61,6 @@
                 transform: translateY(0);
             }
         }
-        /* Leaf falling effect in background */
         .leaf {
             position: absolute;
             pointer-events: none;
@@ -81,7 +77,6 @@
                 left: calc(5% + 90% * var(--random-x));
             }
         }
-        /* Pulsing audio wave */
         .audio-wave span {
             display: inline-block;
             width: 3px;
@@ -97,7 +92,6 @@
             0% { transform: scaleY(0.3); }
             100% { transform: scaleY(1.5); }
         }
-        /* Custom Premium Texture Background from Imgur */
         .textured-bg {
             background-image: linear-gradient(rgba(251, 251, 250, 0.93), rgba(251, 251, 250, 0.93)), url('https://i.imgur.com/r035ySS.jpg');
             background-repeat: repeat;
@@ -106,19 +100,14 @@
 </head>
 <body class="bg-neutralCream text-neutralDark font-sans relative overflow-x-hidden min-h-screen">
 
-    <!-- Ambient falling leaves -->
     <div id="leaves-container" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
 
-    <!-- AUDIO PLAYER ELEMENT WITH STREAMABLE DROPBOX MP3 -->
     <audio id="bg-music" loop preload="auto">
         <source src="" id="audio-source" type="audio/mpeg">
     </audio>
 
-    <!-- 1. ENVELOPE / SCREEN SAVER SPLASH (OPENING CRUTCH) -->
     <div id="envelope-screen" class="fixed inset-0 z-50 bg-neutralCream flex flex-col justify-center items-center px-6 transition-all duration-1000 ease-in-out">
-        <!-- Delicate Frame -->
         <div class="border border-neutralSand/60 p-8 max-w-md w-full text-center bg-neutralWhite rounded-2xl shadow-xl flex flex-col justify-center items-center relative overflow-hidden">
-            <!-- Watercolor foliage decorations (Inline SVG) -->
             <div class="absolute -top-6 -right-6 text-neutralSage/20 w-32 h-32">
                 <svg viewBox="0 0 100 100" class="fill-current"><path d="M50,0 C65,20 80,30 100,50 C80,60 60,60 50,100 C40,60 20,60 0,50 C20,30 35,20 50,0 Z"></path></svg>
             </div>
@@ -143,13 +132,11 @@
         </div>
     </div>
 
-    <!-- NOTIFICATION POPUP (Replaces Native Alert) -->
     <div id="toast" class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-neutralDark text-neutralWhite px-6 py-3 rounded-full text-sm font-medium shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
         <i class="fa-solid fa-circle-check text-neutralRose"></i>
         <span id="toast-message">Copiado al portapapeles</span>
     </div>
 
-    <!-- MAIN APP WRAPPER (Hidden until "Abrir" is clicked) -->
     <div id="main-content" class="opacity-0 transition-opacity duration-1000 max-w-lg mx-auto bg-neutralWhite min-h-screen shadow-2xl relative border-x border-neutralSand/30 pb-20 textured-bg">
         
         <!-- Music Floating Control -->
@@ -162,22 +149,18 @@
             </button>
         </div>
 
-        <!-- Admin Settings Gear (Hidden by default, shown ONLY if url parameter ?admin=1 is used) -->
+        <!-- Admin Settings Gear -->
         <div id="admin-gear-container" class="fixed bottom-4 left-4 z-40 hidden">
             <button onclick="toggleSettingsModal()" class="w-10 h-10 rounded-full bg-neutralDark/20 hover:bg-neutralDark/40 backdrop-blur-sm flex items-center justify-center text-neutralDark shadow-md transition-all duration-300" title="Ajustes de la Invitación">
                 <i class="fa-solid fa-sliders text-sm"></i>
             </button>
         </div>
 
-        <!-- 1. FULLSCREEN PORTADA / HERO HEADER SECTION -->
+        <!-- Fullscreen Hero Cover -->
         <header class="relative w-full h-screen flex flex-col justify-between items-center text-center overflow-hidden z-20">
-            <!-- Fullscreen background image with subtle scale transition -->
             <div id="hero-img-bg" class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 scale-100" style="background-image: url('https://i.imgur.com/rWrSAKy.jpg');"></div>
-            
-            <!-- Soft warm gradient overlay from top to bottom (despejando centro de las caras) -->
             <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/10 to-neutralWhite"></div>
 
-            <!-- Top Header Details & Names Grouped to avoid overlap with faces in the center -->
             <div class="relative z-20 pt-14 px-6 w-full">
                 <p class="font-sans text-[10px] tracking-[0.5em] uppercase text-neutralWhite font-semibold drop-shadow-md">¡Nuestra Boda!</p>
                 <div class="w-10 h-[1px] bg-neutralWhite/60 mx-auto mt-2 mb-4"></div>
@@ -197,10 +180,8 @@
                 </p>
             </div>
 
-            <!-- Empty Middle Section (Forces layout to push content up, leaving center/faces free of text) -->
             <div class="flex-grow"></div>
 
-            <!-- Bottom scroll indicator -->
             <div class="relative z-20 pb-12 flex flex-col items-center">
                 <p class="font-sans text-[9px] uppercase tracking-[0.3em] text-neutralDark/80 font-semibold mb-2">Desliza para ver la Invitación</p>
                 <div class="w-8 h-12 border-2 border-neutralDark/60 rounded-full p-1 flex justify-center bg-neutralWhite/10 backdrop-blur-sm">
@@ -209,12 +190,10 @@
             </div>
         </header>
 
-        <!-- PHOTO BODY BANNER 1 (Romántica - Fullscreen Horizontal Format) -->
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/JnKqboY.jpg');">
             <div class="absolute inset-0 bg-gradient-to-b from-neutralWhite via-transparent to-transparent"></div>
         </div>
 
-        <!-- VERSE / INSPIRATION BLOCK -->
         <section class="py-12 px-6 text-center bg-transparent">
             <div class="max-w-md mx-auto bg-neutralWhite/95 px-6 py-6 rounded-2xl border border-neutralSand/30 shadow-md relative backdrop-blur-sm">
                 <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-3 py-0.5 bg-neutralSage text-white text-[9px] tracking-widest uppercase font-semibold border border-neutralSand/40 rounded-full">Nuestra Inspiración</span>
@@ -225,15 +204,12 @@
             </div>
         </section>
 
-        <!-- COUNTDOWN SECTION WITH CUSTOM IMAGE BACKDROP -->
         <section id="countdown-section" class="relative py-16 px-6 text-center border-y border-neutralSand/20 bg-cover bg-center overflow-hidden" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
-            <!-- Semi-transparent neutral filter to ensure visual legibility -->
             <div class="absolute inset-0 bg-neutralCream/85 backdrop-blur-[1px]"></div>
             
             <div class="relative z-10">
                 <h3 class="font-serifTitle text-xs tracking-[0.25em] text-neutralSage uppercase mb-6 font-bold">Faltan Sólo</h3>
                 
-                <!-- Countdown Grid -->
                 <div class="grid grid-cols-4 gap-2 max-w-xs mx-auto mb-4">
                     <div class="bg-neutralWhite/95 p-3 rounded-xl border border-neutralSand/40 shadow-sm backdrop-blur-sm">
                         <span id="countdown-days" class="block font-serifTitle text-2xl md:text-3xl text-neutralSage font-bold">00</span>
@@ -253,24 +229,19 @@
                     </div>
                 </div>
 
-                <!-- Wedding Date Text (Updated to November 21) -->
                 <p id="wedding-date-display" class="font-serifTitle text-lg text-neutralDark tracking-wider mt-5 font-semibold">
                     Sábado, 21 de Noviembre de 2026
                 </p>
             </div>
         </section>
 
-        <!-- PHOTO BODY BANNER 2 (Mirada Cómplice - Fullscreen Horizontal Format) -->
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/SScy16B.jpg');"></div>
 
-        <!-- THE PARENTS OF THE BRIDE & GROOM -->
         <section class="py-16 px-8 text-center bg-transparent relative">
             <span class="text-neutralSage text-xl opacity-80"><i class="fa-solid fa-dove"></i></span>
             <h3 class="font-serifTitle text-xl text-neutralDark mt-2 mb-8 tracking-wider">Con la bendición de nuestros padres</h3>
 
-            <!-- Parents Grid -->
             <div class="space-y-8 max-w-md mx-auto">
-                <!-- Parents Bride -->
                 <div class="p-6 rounded-2xl bg-neutralWhite border border-neutralSand/30 shadow-sm backdrop-blur-sm">
                     <h4 class="font-sans text-[10px] uppercase tracking-[0.25em] text-neutralSage font-bold mb-3">Padres de la Novia</h4>
                     <p class="font-serifBody text-xl text-neutralDark font-medium leading-relaxed">
@@ -280,7 +251,6 @@
                     </p>
                 </div>
 
-                <!-- Parents Groom -->
                 <div class="p-6 rounded-2xl bg-neutralWhite border border-neutralSand/30 shadow-sm backdrop-blur-sm">
                     <h4 class="font-sans text-[10px] uppercase tracking-[0.25em] text-neutralSage font-bold mb-3">Padres del Novio</h4>
                     <p class="font-serifBody text-xl text-neutralDark font-medium leading-relaxed">
@@ -292,15 +262,12 @@
             </div>
         </section>
 
-        <!-- PHOTO BODY BANNER 3 (Cálida - Fullscreen Horizontal Format) -->
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/c4KREX6.jpg');"></div>
 
-        <!-- VENUE & TIME DETAILS -->
         <section class="py-16 px-6 bg-transparent text-center relative overflow-hidden">
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-place-of-worship"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">La Celebración</h3>
 
-            <!-- Dynamic Religious Ceremony Card (Hidden by default, shown if URL parameter c=1) -->
             <div id="religious-ceremony-card" class="bg-neutralWhite rounded-3xl p-8 max-w-md mx-auto shadow-md border border-neutralSand/30 space-y-6 relative z-10 backdrop-blur-sm mb-8 hidden">
                 <div class="absolute top-0 right-4 transform -translate-y-1/2 bg-neutralRose text-white text-[9px] font-sans font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
                     Ceremonia Religiosa
@@ -320,7 +287,6 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-                    <!-- Google Maps Button -->
                     <a href="https://maps.google.com/?q=Templo+de+San+Jose+Morelia" 
                        target="_blank" 
                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-neutralSage text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:bg-neutralDark hover:shadow-md">
@@ -330,7 +296,6 @@
                 </div>
             </div>
 
-            <!-- Reception Card (Always Visible) -->
             <div class="bg-neutralWhite rounded-3xl p-8 max-w-md mx-auto shadow-md border border-neutralSand/30 space-y-6 relative z-10 backdrop-blur-sm">
                 <div class="absolute top-0 right-4 transform -translate-y-1/2 bg-neutralSage text-white text-[9px] font-sans font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
                     Recepción y Fiesta
@@ -350,7 +315,6 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-                    <!-- Google Maps Button -->
                     <a href="https://maps.google.com/?q=Salón+Camilas+Eventos+Calz.+Ventura+Puente+1661+Morelia" 
                        target="_blank" 
                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-neutralSage text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:bg-neutralDark hover:shadow-md">
@@ -358,7 +322,6 @@
                         Ver Ubicación
                     </a>
 
-                    <!-- Calendar Link Creator Button -->
                     <button onclick="addToCalendar()" 
                             class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-neutralSage text-neutralSage font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:bg-neutralSage/10">
                         <i class="fa-solid fa-calendar-plus"></i>
@@ -368,10 +331,8 @@
             </div>
         </section>
 
-        <!-- PHOTO BODY BANNER 4 (Elegante - Fullscreen Horizontal Format) -->
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/5C6F61g.jpg');"></div>
 
-        <!-- ITINERARY / TIMELINE -->
         <section class="py-16 px-8 bg-transparent relative">
             <div class="text-center mb-12">
                 <span class="text-neutralRose text-xl opacity-80"><i class="fa-solid fa-clock"></i></span>
@@ -379,10 +340,7 @@
                 <p class="font-serifBody text-sm italic text-neutralDark/60 mt-1">Sigue de cerca cada momento mágico</p>
             </div>
 
-            <!-- Vertical Timeline Structure -->
             <div class="relative max-w-sm mx-auto pl-8 border-l-2 border-neutralSand/50 space-y-12">
-                
-                <!-- 1. Recepción -->
                 <div class="relative">
                     <span class="absolute -left-[45px] top-0 bg-neutralWhite border-2 border-neutralSage text-neutralSage rounded-full w-8 h-8 flex items-center justify-center text-xs shadow-sm z-10">
                         <i class="fa-solid fa-door-open"></i>
@@ -396,7 +354,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Entrada de novios -->
                 <div class="relative">
                     <span class="absolute -left-[45px] top-0 bg-neutralWhite border-2 border-neutralRose text-neutralRose rounded-full w-8 h-8 flex items-center justify-center text-xs shadow-sm z-10">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -410,7 +367,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Cena -->
                 <div class="relative">
                     <span class="absolute -left-[45px] top-0 bg-neutralWhite border-2 border-neutralSage text-neutralSage rounded-full w-8 h-8 flex items-center justify-center text-xs shadow-sm z-10">
                         <i class="fa-solid fa-utensils"></i>
@@ -424,7 +380,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Fin del evento -->
                 <div class="relative">
                     <span class="absolute -left-[45px] top-0 bg-neutralWhite border-2 border-neutralDark text-neutralDark rounded-full w-8 h-8 flex items-center justify-center text-xs shadow-sm z-10">
                         <i class="fa-solid fa-moon"></i>
@@ -437,14 +392,11 @@
                         </p>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- PHOTO BODY BANNER 5 (Sustituida con https://imgur.com/2EALzbm) -->
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');"></div>
 
-        <!-- DRESS CODE SECTION ("Elegante y Sofisticado" Removed) -->
         <section class="py-16 px-6 bg-transparent text-center relative">
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-user-tie"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">Código de Vestimenta</h3>
@@ -453,9 +405,7 @@
                 <p class="font-serifBody text-2xl text-neutralDark font-medium">
                     Vestimenta: <span class="text-neutralSage font-serifTitle font-semibold">Formal</span>
                 </p>
-
                 <div class="w-12 h-[1px] bg-neutralRose mx-auto my-2"></div>
-
                 <p class="font-serifBody text-base text-neutralDark/80 leading-relaxed px-4">
                     Agradecemos su gentil colaboración vistiendo de etiqueta formal.
                 </p>
@@ -465,7 +415,6 @@
             </div>
         </section>
 
-        <!-- GIFT REGISTRY -->
         <section class="py-16 px-6 bg-transparent text-center relative">
             <span class="text-neutralRose text-2xl opacity-80"><i class="fa-solid fa-gift"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-2 tracking-wide">Mesa de Regalos</h3>
@@ -473,19 +422,15 @@
                 Agradecemos profundamente su presencia y su cariño. Si desean tener un detalle con nosotros, ponemos a su disposición nuestra mesa de regalos.
             </p>
 
-            <!-- Gift Card -->
             <div class="bg-neutralWhite rounded-3xl p-8 max-w-md mx-auto border border-neutralSand/30 shadow-sm space-y-6 backdrop-blur-sm">
                 <div class="flex justify-center items-center gap-3">
                     <span class="font-serifTitle text-2xl tracking-[0.1em] text-neutralDark font-bold">Liverpool</span>
                 </div>
-                
                 <div class="w-16 h-[1px] bg-neutralRose mx-auto"></div>
-
                 <div>
                     <p class="font-sans text-[10px] uppercase tracking-widest text-neutralSage font-bold mb-1">Número de Evento</p>
                     <p id="event-number" class="font-serifTitle text-3xl text-neutralDark font-semibold tracking-wider">51997417</p>
                 </div>
-
                 <button onclick="copyRegistryCode()" 
                         class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-neutralSage text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:bg-neutralDark hover:shadow-md">
                     <i class="fa-solid fa-copy"></i>
@@ -494,16 +439,13 @@
             </div>
         </section>
 
-        <!-- PHOTO GALLERY SHOWCASE -->
         <section class="py-16 px-6 bg-transparent text-center relative">
             <span class="text-neutralSage text-xl opacity-80"><i class="fa-solid fa-camera-retro"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-2 tracking-wide">Galería</h3>
             <p class="font-serifBody text-sm italic text-neutralDark/60 mt-1 mb-8">Un viaje de amor y complicidad</p>
 
-            <!-- Gallery Frame -->
             <div class="relative max-w-sm mx-auto rounded-3xl overflow-hidden aspect-[4/5] shadow-lg border-4 border-neutralWhite group bg-neutralWhite">
                 <div id="gallery-carousel" class="w-full h-full relative">
-                    <!-- Carousel Slides generated with Imgur images -->
                     <img id="gallery-img-0" src="https://i.imgur.com/sYHjuQX.jpg" alt="Amor 1" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
                     <img id="gallery-img-1" src="https://i.imgur.com/7iKWNaJ.jpg" alt="Amor 2" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
                     <img id="gallery-img-2" src="https://i.imgur.com/nexgcCD.jpg" alt="Amor 3" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
@@ -516,7 +458,6 @@
                     <img id="gallery-img-9" src="https://i.imgur.com/PH1544U.jpg" alt="Amor 10" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
                 </div>
 
-                <!-- Carousel Controls -->
                 <button onclick="prevGallerySlide()" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-9 h-9 rounded-full bg-neutralWhite/80 backdrop-blur-sm flex items-center justify-center text-neutralDark hover:bg-neutralWhite transition-all z-10">
                     <i class="fa-solid fa-chevron-left text-sm"></i>
                 </button>
@@ -524,17 +465,14 @@
                     <i class="fa-solid fa-chevron-right text-sm"></i>
                 </button>
 
-                <!-- Indicator overlay -->
                 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-neutralDark/60 backdrop-blur-sm text-neutralWhite text-[10px] tracking-widest uppercase py-1 px-3 rounded-full font-medium">
                     <span id="gallery-indicator">1 / 10</span>
                 </div>
             </div>
         </section>
 
-        <!-- PHOTO BODY BANNER 6 (Abrazo - Fullscreen Horizontal Format) -->
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/bKVelzR.jpg');"></div>
 
-        <!-- RSVP / CONFIRMATION FORM -->
         <section class="py-16 px-6 bg-transparent text-center relative border-t border-neutralSand/20">
             <span class="text-neutralRose text-2xl opacity-80"><i class="fa-solid fa-envelope-open-text"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-2 tracking-wide">Confirmación de Asistencia</h3>
@@ -548,37 +486,46 @@
                 <p id="rsvp-deadline-text" class="font-serifTitle text-sm text-neutralDark font-semibold mt-0.5">Sábado, 14 de Noviembre de 2026</p>
             </div>
 
-            <!-- Confirmation Simplified Form (Placeholder Updated) -->
-            <div class="bg-neutralWhite/95 rounded-3xl p-6 max-w-md mx-auto border border-neutralSand/30 text-left space-y-5 shadow-md backdrop-blur-sm">
-                
-                <!-- Guest Name Input -->
+            <div id="rsvp-form-card" class="bg-neutralWhite/95 rounded-3xl p-6 max-w-md mx-auto border border-neutralSand/30 text-left space-y-4 shadow-md backdrop-blur-sm">
                 <div>
                     <label for="rsvp-name" class="block font-sans text-[11px] uppercase tracking-widest text-neutralSage font-bold mb-1.5">Nombre Completo</label>
                     <input type="text" id="rsvp-name" placeholder="Ej. Maria Rubio Villa" 
                            class="w-full px-4 py-3 rounded-xl border border-neutralSand bg-neutralWhite font-sans text-sm focus:outline-none focus:ring-2 focus:ring-neutralSage/50 focus:border-neutralSage text-neutralDark transition-all">
                 </div>
 
-                <!-- Number of Guests Selected (Dynamic Header Label added) -->
+                <div>
+                    <label for="rsvp-phone" class="block font-sans text-[11px] uppercase tracking-widest text-neutralSage font-bold mb-1.5">Teléfono Celular / WhatsApp</label>
+                    <input type="tel" id="rsvp-phone" placeholder="Ej. 443 123 4567" 
+                           class="w-full px-4 py-3 rounded-xl border border-neutralSand bg-neutralWhite font-sans text-sm focus:outline-none focus:ring-2 focus:ring-neutralSage/50 focus:border-neutralSage text-neutralDark transition-all">
+                </div>
+
                 <div>
                     <div class="flex justify-between items-center mb-1.5">
-                        <label for="rsvp-guests" class="block font-sans text-[11px] uppercase tracking-widest text-neutralSage font-bold">Número de Pases que necesitas</label>
+                        <label for="rsvp-guests" class="block font-sans text-[11px] uppercase tracking-widest text-neutralSage font-bold">Número de Pases a Confirmar</label>
                         <span id="passes-allocation-label" class="hidden text-[9px] uppercase bg-neutralSage/10 text-neutralSage font-bold px-2 py-0.5 rounded-full"></span>
                     </div>
                     <select id="rsvp-guests" class="w-full px-4 py-3 rounded-xl border border-neutralSand bg-neutralWhite font-sans text-sm focus:outline-none focus:ring-2 focus:ring-neutralSage/50 focus:border-neutralSage text-neutralDark transition-all">
-                        <!-- Options generated dynamically by script -->
                     </select>
                 </div>
 
-                <!-- Submit Confirm / Launch WhatsApp -->
-                <button onclick="sendRSVP()" 
+                <button onclick="submitDirectRSVP()" id="btn-submit-rsvp"
                         class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-neutralSage text-white font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:bg-neutralDark hover:shadow-lg mt-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    Confirmar por WhatsApp
+                    <i class="fa-solid fa-paper-plane text-base"></i>
+                    Enviar Confirmación
                 </button>
+            </div>
+
+            <div id="rsvp-success-card" class="hidden bg-neutralWhite/95 rounded-3xl p-8 max-w-md mx-auto border border-neutralSage/40 text-center space-y-3 shadow-md backdrop-blur-sm">
+                <div class="w-14 h-14 rounded-full bg-neutralSage/15 text-neutralSage flex items-center justify-center mx-auto text-2xl">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h4 class="font-serifTitle text-xl text-neutralDark font-bold">¡Confirmación Recibida!</h4>
+                <p id="rsvp-success-msg" class="font-serifBody text-base text-neutralDark/80 leading-relaxed">
+                    Muchas gracias por registrar tus datos. Tu asistencia ha quedado guardada en nuestra lista. La wedding planner se pondrá en contacto contigo pronto.
+                </p>
             </div>
         </section>
 
-        <!-- FOOTER BLOCK -->
         <footer class="py-12 bg-transparent text-center border-t border-neutralSand/20 space-y-4">
             <h4 class="font-serifTitle text-2xl text-neutralDark tracking-wider">Fanny & Luis</h4>
             <p class="font-serifBody text-base italic text-neutralDark/60">¡Nos vemos en nuestra gran celebración!</p>
@@ -588,120 +535,164 @@
 
     </div>
 
-    <!-- 2. CUSTOMIZABLE CONFIG PANEL / SETTINGS MODAL (WITH LOCALSTORAGE PERSISTENCE) -->
     <div id="settings-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 hidden transition-all duration-300">
-        <div class="bg-neutralWhite rounded-3xl p-6 max-w-md w-full shadow-2xl border border-neutralSand max-h-[90vh] overflow-y-auto space-y-4">
+        <div class="bg-neutralWhite rounded-3xl p-6 max-w-xl w-full shadow-2xl border border-neutralSand max-h-[92vh] overflow-y-auto space-y-5">
+            
             <div class="flex justify-between items-center pb-2 border-b border-neutralSand">
                 <h3 class="font-serifTitle text-lg text-neutralDark font-semibold flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-neutralSage"></i> Panel de Configuración
+                    <i class="fa-solid fa-sliders text-neutralSage"></i> Panel de Administración
                 </h3>
                 <button onclick="toggleSettingsModal()" class="w-8 h-8 rounded-full bg-neutralCream flex items-center justify-center text-neutralDark hover:bg-neutralSage hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <p class="font-sans text-xs text-neutralDark/60 leading-relaxed">
-                Usa este panel interactivo para personalizar la fecha de la boda, el contacto y la música. ¡Los cambios se guardan localmente en tu navegador de forma segura!
-            </p>
-
-            <!-- Set Target Wedding Date -->
-            <div>
-                <label for="set-wedding-date" class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold mb-1">Fecha de la Boda</label>
-                <input type="datetime-local" id="set-wedding-date" value="2026-11-21T19:30"
-                       class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-            </div>
-
-            <!-- Set RSVP Limit Date -->
-            <div>
-                <label for="set-rsvp-deadline" class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold mb-1">Fecha Límite de Confirmación</label>
-                <input type="date" id="set-rsvp-deadline" value="2026-11-14"
-                       class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-            </div>
-
-            <!-- Set Confirmation WhatsApp Number -->
-            <div>
-                <label for="set-rsvp-phone" class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold mb-1">Celular WP / Confirmaciones (WhatsApp)</label>
-                <input type="text" id="set-rsvp-phone" value="4431011723" placeholder="Ej. 4431011723"
-                       class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-            </div>
-
-            <!-- SECTION CEREMONIA RELIGIOSA (CUSTOMIZATOR) -->
-            <div class="border-t border-neutralSand/40 pt-3 space-y-3">
-                <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralRose font-bold">Datos de la Ceremonia Religiosa</span>
-                <div>
-                    <label for="set-ceremony-venue" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold">Templo / Lugar</label>
-                    <input type="text" id="set-ceremony-venue" value="Templo de San José"
-                           class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                </div>
-                <div>
-                    <label for="set-ceremony-time" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold">Hora de la Ceremonia</label>
-                    <input type="text" id="set-ceremony-time" value="18:00 Horas"
-                           class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                </div>
-            </div>
-
-            <!-- DYNAMIC LINK GENERATOR (Copiar Enlace con pases + ceremonia) -->
-            <div class="bg-neutralCream/40 border border-neutralSand/50 rounded-2xl p-4 space-y-3">
-                <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralDark font-bold text-center">Generador de Enlaces Personalizados</span>
-                
-                <div>
-                    <label for="gen-passes" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Pases para esta familia</label>
-                    <select id="gen-passes" class="w-full px-3 py-1.5 rounded-lg border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                        <option value="0">Estándar (1 a 5 pases)</option>
-                        <option value="1">1 Pase asignado</option>
-                        <option value="2">2 Pases asignados</option>
-                        <option value="3">3 Pases asignados</option>
-                        <option value="4">4 Pases asignados</option>
-                        <option value="5">5 Pases asignados</option>
-                        <option value="6">6 Pases asignados</option>
-                        <option value="7">7 Pases asignados</option>
-                        <option value="8">8 Pases asignados</option>
-                        <option value="9">9 Pases asignados</option>
-                        <option value="10">10 Pases asignados</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="gen-ceremony" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">¿Invitar a la Ceremonia Religiosa?</label>
-                    <select id="gen-ceremony" class="w-full px-3 py-1.5 rounded-lg border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                        <option value="no">No (Solo Recepción)</option>
-                        <option value="yes" selected>Sí (Ceremonia + Recepción)</option>
-                    </select>
-                </div>
-
-                <button onclick="generateCustomLink()" class="w-full bg-neutralSage text-white px-3 py-2 rounded-lg text-xs font-bold uppercase hover:bg-neutralDark transition-all flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-link"></i> Generar y Copiar Enlace
+            <!-- Tab Switcher -->
+            <div class="flex gap-2 border-b border-neutralSand/60 pb-2">
+                <button onclick="switchAdminTab('generator')" id="tab-btn-generator" class="px-3 py-1.5 rounded-lg font-sans text-xs font-bold uppercase transition-all bg-neutralSage text-white">
+                    <i class="fa-solid fa-link"></i> Generador de Enlaces
+                </button>
+                <button onclick="switchAdminTab('rsvps')" id="tab-btn-rsvps" class="px-3 py-1.5 rounded-lg font-sans text-xs font-bold uppercase transition-all bg-neutralCream/60 text-neutralDark hover:bg-neutralCream">
+                    <i class="fa-solid fa-table"></i> Tabla de Confirmaciones (<span id="rsvp-count-badge">0</span>)
                 </button>
             </div>
 
-            <!-- Set Background Music -->
-            <div>
-                <label for="set-music-url" class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold mb-1">Música de Fondo (MP3 Direct Link / Dropbox)</label>
-                <input type="text" id="set-music-url" value="https://www.dropbox.com/scl/fi/3vs1w0yui1qxcqyrfw546/Enchanted.mp3?rlkey=vrq78dkm8obucrwam552ch6yt&st=55hv8ofb&dl=1"
-                       class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+            <!-- Tab 1: Link Generator & Config -->
+            <div id="admin-tab-generator" class="space-y-4">
+                <div class="bg-neutralCream/40 border border-neutralSand/50 rounded-2xl p-4 space-y-3">
+                    <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralDark font-bold text-center">Generar Enlace Personalizado por Familia</span>
+                    
+                    <div>
+                        <label for="gen-family-name" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Nombre de la Familia / Invitado (Opcional)</label>
+                        <input type="text" id="gen-family-name" placeholder="Ej. Familia Guzmán Rubio" 
+                               class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="gen-passes" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Límite de Pases</label>
+                            <select id="gen-passes" class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                                <option value="0">Estándar (1 a 5 pases)</option>
+                                <option value="1">1 Pase asignado</option>
+                                <option value="2">2 Pases asignados</option>
+                                <option value="3">3 Pases asignados</option>
+                                <option value="4">4 Pases asignados</option>
+                                <option value="5">5 Pases asignados</option>
+                                <option value="6">6 Pases asignados</option>
+                                <option value="7">7 Pases asignados</option>
+                                <option value="8">8 Pases asignados</option>
+                                <option value="9">9 Pases asignados</option>
+                                <option value="10">10 Pases asignados</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="gen-ceremony" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">¿Mostrar Ceremonia?</label>
+                            <select id="gen-ceremony" class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                                <option value="no">No (Solo Recepción)</option>
+                                <option value="yes" selected>Sí (Ceremonia + Recepción)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="generateCustomLink()" class="w-full bg-neutralSage text-white px-3 py-2.5 rounded-xl text-xs font-bold uppercase hover:bg-neutralDark transition-all flex items-center justify-center gap-2 mt-2">
+                        <i class="fa-solid fa-copy"></i> Generar y Copiar Enlace
+                    </button>
+                </div>
+
+                <div class="space-y-3 pt-2 border-t border-neutralSand/40">
+                    <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold">Ajustes Generales del Evento</span>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="set-wedding-date" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Fecha de la Boda</label>
+                            <input type="datetime-local" id="set-wedding-date" value="2026-11-21T19:30"
+                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                        </div>
+
+                        <div>
+                            <label for="set-rsvp-deadline" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Límite de Confirmación</label>
+                            <input type="date" id="set-rsvp-deadline" value="2026-11-14"
+                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="set-rsvp-phone" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Celular / Contacto Novios</label>
+                        <input type="text" id="set-rsvp-phone" value="4431011723"
+                               class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                    </div>
+
+                    <div>
+                        <label for="set-music-url" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Enlace MP3 de Música</label>
+                        <input type="text" id="set-music-url" value="https://www.dropbox.com/scl/fi/3vs1w0yui1qxcqyrfw546/Enchanted.mp3?rlkey=vrq78dkm8obucrwam552ch6yt&st=55hv8ofb&dl=1"
+                               class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                    </div>
+
+                    <button onclick="applyConfiguration()"
+                            class="w-full py-3 bg-neutralSage text-white font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-neutralDark transition-colors">
+                        Guardar Cambios de Configuración
+                    </button>
+                </div>
             </div>
 
-            <!-- Apply and Save Settings -->
-            <button onclick="applyConfiguration()"
-                    class="w-full py-3 bg-neutralSage text-white font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-neutralDark transition-colors">
-                Aplicar y Guardar Cambios
-            </button>
+            <!-- Tab 2: RSVP Table & Export -->
+            <div id="admin-tab-rsvps" class="hidden space-y-4">
+                <div class="flex justify-between items-center bg-neutralCream/30 p-3 rounded-2xl border border-neutralSand/40">
+                    <div>
+                        <p class="font-sans text-xs font-bold text-neutralDark">Resumen de Asistencia</p>
+                        <p class="font-sans text-[10px] text-neutralDark/70 mt-0.5">
+                            Total Registros: <strong id="summary-total-records">0</strong> | Total Pases Solic.: <strong id="summary-total-passes">0</strong>
+                        </p>
+                    </div>
+                    
+                    <button onclick="exportRSVPToCSV()" class="bg-neutralSage text-white px-3 py-2 rounded-xl text-xs font-bold uppercase hover:bg-neutralDark transition-all flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-file-excel"></i> Descargar Excel (CSV)
+                    </button>
+                </div>
+
+                <p class="font-sans text-[10px] text-neutralDark/60 italic">
+                    * Nota: Las confirmaciones enviadas también se remiten a <code>drdeckofficial@gmail.com</code> para notificación inmediata.
+                </p>
+
+                <div class="border border-neutralSand/50 rounded-2xl overflow-x-auto max-h-60 bg-neutralWhite">
+                    <table class="w-full text-left font-sans text-xs">
+                        <thead class="bg-neutralCream text-neutralDark font-bold uppercase text-[9px] tracking-wider sticky top-0">
+                            <tr>
+                                <th class="p-2.5">Nombre Completo</th>
+                                <th class="p-2.5">Teléfono Celular</th>
+                                <th class="p-2.5 text-center">Pases</th>
+                                <th class="p-2.5 text-center">Ceremonia</th>
+                                <th class="p-2.5">Fecha Envío</th>
+                                <th class="p-2.5 text-center">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rsvp-table-body" class="divide-y divide-neutralSand/30 text-neutralDark">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="flex justify-between items-center pt-2">
+                    <button onclick="clearAllRSVPs()" class="text-[10px] text-red-500 hover:text-red-700 font-bold uppercase underline">
+                        Borrar todas las confirmaciones
+                    </button>
+                    <span class="text-[9px] text-neutralDark/50 uppercase tracking-widest">Sincronizado Local</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
-        // CONFIGURACIÓN MADRE (Fijada al 21 de Noviembre de 2026)
         let weddingConfig = {
             weddingDate: "2026-11-21T19:30:00",
             rsvpDeadline: "2026-11-14",
-            rsvpPhone: "4431011723", 
+            rsvpPhone: "4431011723",
             heroImg: "https://i.imgur.com/rWrSAKy.jpg",
             countdownBg: "https://i.imgur.com/2EALzbm.jpg",
             musicUrl: "https://www.dropbox.com/scl/fi/3vs1w0yui1qxcqyrfw546/Enchanted.mp3?rlkey=vrq78dkm8obucrwam552ch6yt&st=55hv8ofb&dl=1",
             ceremonyVenue: "Templo de San José",
             ceremonyTime: "18:00 Horas",
-            // Galería oficial de 10 Imágenes de Imgur
             galleryImages: [
                 "https://i.imgur.com/sYHjuQX.jpg",
                 "https://i.imgur.com/7iKWNaJ.jpg",
@@ -720,10 +711,11 @@
         let isMusicPlaying = false;
         let currentGalleryIndex = 0;
         const totalGallerySlides = 10; 
+        let rsvpList = [];
 
-        // On Page Load: Check localstorage settings, start elements, parameters
         window.addEventListener('DOMContentLoaded', () => {
             loadSavedSettings();
+            loadSavedRSVPs();
             initLeaves();
             initCountdown();
             checkGuestParameters();
@@ -731,7 +723,6 @@
             prepareAudioSource();
         });
 
-        // Convert Dropbox links cleanly for bypass CORS issue in GitHub Pages stream play
         function getCleanAudioUrl(rawUrl) {
             if (rawUrl.includes("dropbox.com")) {
                 let cleanUrl = rawUrl.replace("www.dropbox.com", "dl.dropboxusercontent.com");
@@ -748,7 +739,6 @@
             document.getElementById('bg-music').load();
         }
 
-        // LocalStorage loading logic for GitHub Deployment persistence
         function loadSavedSettings() {
             const savedData = localStorage.getItem('wedding_config_fanny_luis');
             if (savedData) {
@@ -762,11 +752,9 @@
             applyConfigToUI();
         }
 
-        // Apply visual config instantly to DOM (With Safari Mobile strict-date compatibility fix)
         function applyConfigToUI() {
             const dOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             
-            // Format replacement: Convert dashed ISO string "YYYY-MM-DD" to universally parsed "YYYY/MM/DD"
             const safeWeddingStr = weddingConfig.weddingDate.replace(/-/g, '/').replace('T', ' ');
             const parsedWedding = new Date(safeWeddingStr);
             document.getElementById('wedding-date-display').innerText = parsedWedding.toLocaleDateString('es-ES', dOptions);
@@ -782,44 +770,41 @@
             document.getElementById('countdown-section').style.backgroundImage = `url('${weddingConfig.countdownBg}')`;
         }
 
-        // Detect URL parameters for Ceremony (?c=1) & Dynamic Passes (?p=x)
         function checkGuestParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             
-            // 1. Check Ceremony display
             const showCeremony = urlParams.get('c') === '1' || urlParams.get('ceremonia') === 'true';
             const ceremonyCard = document.getElementById('religious-ceremony-card');
-            
             if (showCeremony) {
                 ceremonyCard.classList.remove('hidden');
             } else {
                 ceremonyCard.classList.add('hidden');
             }
 
-            // 2. Check Passes allocation limit
+            const familyName = urlParams.get('n') || urlParams.get('nombre');
+            if (familyName) {
+                const nameInput = document.getElementById('rsvp-name');
+                if (nameInput) nameInput.value = familyName;
+            }
+
             const passesLimit = parseInt(urlParams.get('p'));
             const guestsSelect = document.getElementById('rsvp-guests');
             const passesLabel = document.getElementById('passes-allocation-label');
 
             if (!isNaN(passesLimit) && passesLimit > 0) {
                 guestsSelect.innerHTML = '';
-                // Dynamically build selection list up to passes limit
                 for (let i = 1; i <= passesLimit; i++) {
                     const opt = document.createElement('option');
                     opt.value = i;
                     opt.textContent = `${i} ${i === 1 ? 'Pase' : 'Pases'}`;
-                    if (i === passesLimit) {
-                        opt.selected = true; // Pre-select maximum
-                    }
+                    if (i === passesLimit) opt.selected = true;
                     guestsSelect.appendChild(opt);
                 }
-                // Show personalized badge in form header
                 if (passesLabel) {
                     passesLabel.textContent = `Tienes ${passesLimit} ${passesLimit === 1 ? 'pase reservado' : 'pases reservados'}`;
                     passesLabel.classList.remove('hidden');
                 }
             } else {
-                // Fallback / Default configuration (1 to 5)
                 guestsSelect.innerHTML = `
                     <option value="1">1 Pase</option>
                     <option value="2" selected>2 Pases</option>
@@ -827,13 +812,16 @@
                     <option value="4">4 Pases</option>
                     <option value="5">5 Pases</option>
                 `;
-                if (passesLabel) {
-                    passesLabel.classList.add('hidden');
-                }
+                if (passesLabel) passesLabel.classList.add('hidden');
+            }
+
+            const hasConfirmed = localStorage.getItem('wedding_rsvp_submitted_fanny_luis');
+            if (hasConfirmed) {
+                document.getElementById('rsvp-form-card').classList.add('hidden');
+                document.getElementById('rsvp-success-card').classList.remove('hidden');
             }
         }
 
-        // Detect if the URL contains "?admin=1" to reveal the gear icon
         function checkAdminParameter() {
             const urlParams = new URLSearchParams(window.location.search);
             const isAdmin = urlParams.get('admin') === '1';
@@ -846,7 +834,6 @@
             }
         }
 
-        // Generate Ambient Falling Sage & Blush Leaves
         function initLeaves() {
             const container = document.getElementById('leaves-container');
             const totalLeaves = 15;
@@ -856,7 +843,6 @@
                 leaf.style.setProperty('--random-x', Math.random());
                 leaf.style.animationDelay = `${Math.random() * 10}s`;
                 leaf.style.animationDuration = `${8 + Math.random() * 8}s`;
-                
                 leaf.innerHTML = `
                     <svg viewBox="0 0 100 100" class="w-4 h-4 fill-current">
                         <path d="M50 0 C60 30 90 40 100 50 C80 60 70 80 50 100 C30 80 20 60 0 50 C10 40 40 30 50 0 Z"></path>
@@ -866,7 +852,6 @@
             }
         }
 
-        // Progressive audio fade-in logic
         function fadeInAudio(audioElement, durationMs = 3000) {
             audioElement.volume = 0;
             const targetVolume = 1.0;
@@ -883,7 +868,6 @@
             }, intervalTime);
         }
 
-        // Opens the invitation, launches audio and shows main body
         function openInvitation() {
             const mainContent = document.getElementById('main-content');
             mainContent.classList.remove('opacity-0');
@@ -897,24 +881,19 @@
 
             const music = document.getElementById('bg-music');
             music.src = getCleanAudioUrl(weddingConfig.musicUrl);
-            
-            // Set starting time to 1:50 (110 seconds)
-            music.currentTime = 110;
+            music.currentTime = 110; 
             music.volume = 0; 
 
             music.play().then(() => {
                 isMusicPlaying = true;
                 document.getElementById('music-icon').className = 'fa-solid fa-pause text-lg';
                 document.getElementById('audio-visualizer').classList.remove('hidden');
-                
-                // Trigger smooth fade-in
                 fadeInAudio(music, 3000);
             }).catch(err => {
                 console.log("Audio autoplay prevented by browser.");
             });
         }
 
-        // Toggle Music Play/Pause
         function toggleMusic() {
             const music = document.getElementById('bg-music');
             if (isMusicPlaying) {
@@ -930,7 +909,6 @@
             }
         }
 
-        // Countdown Timer Logic (Safari Mobile strict-date compatible)
         function initCountdown() {
             if (countdownInterval) clearInterval(countdownInterval);
 
@@ -970,7 +948,6 @@
             countdownInterval = setInterval(updateTimer, 1000);
         }
 
-        // Photo Gallery Carousel (Supporting all 10 images dynamically)
         function updateGalleryView() {
             for (let i = 0; i < totalGallerySlides; i++) {
                 const img = document.getElementById(`gallery-img-${i}`);
@@ -997,7 +974,6 @@
             updateGalleryView();
         }
 
-        // Copy Gift Registry Code
         function copyRegistryCode() {
             const eventCode = document.getElementById('event-number').innerText;
             const input = document.createElement('input');
@@ -1010,7 +986,6 @@
             showToast("Código de Liverpool Copiado!");
         }
 
-        // Standard Elegant Notification Popups
         function showToast(message) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-message').innerText = message;
@@ -1023,69 +998,218 @@
             }, 3000);
         }
 
-        // Generate and Send WhatsApp RSVP
-        function sendRSVP() {
+        function submitDirectRSVP() {
             const name = document.getElementById('rsvp-name').value.trim();
+            const phone = document.getElementById('rsvp-phone').value.trim();
             const guests = document.getElementById('rsvp-guests').value;
 
             if (!name) {
-                showToast("Por favor, introduce tu nombre.");
+                showToast("Por favor, introduce tu Nombre Completo.");
                 document.getElementById('rsvp-name').focus();
                 return;
             }
 
-            // Simplified elegant RSVP text
-            const message = `¡Hola Fanny y Luis! 🕊️✨ Con gran alegría confirmo mi asistencia a su boda.\n\n👤 *Confirmado por:* ${name}\n👥 *Pases que se necesitan:* ${guests}`;
+            if (!phone || phone.length < 8) {
+                showToast("Por favor, ingresa tu número de teléfono.");
+                document.getElementById('rsvp-phone').focus();
+                return;
+            }
 
-            const phone = weddingConfig.rsvpPhone.replace(/\D/g, '');
-            const encodedText = encodeURIComponent(message);
-            const rsvpUrl = `https://wa.me/52${phone}?text=${encodedText}`;
+            const urlParams = new URLSearchParams(window.location.search);
+            const includesCeremony = urlParams.get('c') === '1' ? 'Sí' : 'No';
 
-            window.open(rsvpUrl, '_blank');
+            const newRecord = {
+                id: Date.now(),
+                name: name,
+                phone: phone,
+                passes: parseInt(guests),
+                ceremony: includesCeremony,
+                date: new Date().toLocaleString('es-MX')
+            };
+
+            rsvpList.push(newRecord);
+            saveRSVPsToStorage();
+
+            localStorage.setItem('wedding_rsvp_submitted_fanny_luis', 'true');
+
+            try {
+                fetch("https://formsubmit.co/ajax/drdeckofficial@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: `Nueva Confirmación Boda: ${name}`,
+                        Nombre: name,
+                        Telefono: phone,
+                        Pases_Confirmados: guests,
+                        Invita_Ceremonia: includesCeremony,
+                        Fecha_Registro: newRecord.date
+                    })
+                }).catch(err => console.log("Background email submission error", err));
+            } catch(e) {
+                console.log("Submit silent fail", e);
+            }
+
+            document.getElementById('rsvp-form-card').classList.add('hidden');
+            document.getElementById('rsvp-success-card').classList.remove('hidden');
+
+            showToast("¡Confirmación Registrada!");
         }
 
-        // Google Calendar Event Creator Link
+        function loadSavedRSVPs() {
+            const stored = localStorage.getItem('wedding_rsvps_list_fanny_luis');
+            if (stored) {
+                try {
+                    rsvpList = JSON.parse(stored);
+                } catch(e) {
+                    rsvpList = [];
+                }
+            }
+            renderRSVPTable();
+        }
+
+        function saveRSVPsToStorage() {
+            localStorage.setItem('wedding_rsvps_list_fanny_luis', JSON.stringify(rsvpList));
+            renderRSVPTable();
+        }
+
+        function renderRSVPTable() {
+            const tbody = document.getElementById('rsvp-table-body');
+            const badge = document.getElementById('rsvp-count-badge');
+            const totalRec = document.getElementById('summary-total-records');
+            const totalPass = document.getElementById('summary-total-passes');
+
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+            let sumPasses = 0;
+
+            if (rsvpList.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-neutralDark/50 italic">No hay confirmaciones registradas aún.</td></tr>`;
+            } else {
+                rsvpList.forEach((item, index) => {
+                    sumPasses += (item.passes || 0);
+                    const tr = document.createElement('tr');
+                    tr.className = index % 2 === 0 ? 'bg-white' : 'bg-neutralCream/20';
+                    tr.innerHTML = `
+                        <td class="p-2.5 font-semibold">${item.name}</td>
+                        <td class="p-2.5">${item.phone}</td>
+                        <td class="p-2.5 text-center font-bold text-neutralSage">${item.passes}</td>
+                        <td class="p-2.5 text-center">${item.ceremony === 'Sí' ? '✨ Sí' : 'No'}</td>
+                        <td class="p-2.5 text-[10px] text-neutralDark/70">${item.date}</td>
+                        <td class="p-2.5 text-center">
+                            <button onclick="deleteRSVPRecord(${item.id})" class="text-red-400 hover:text-red-600 p-1" title="Eliminar">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            if (badge) badge.innerText = rsvpList.length;
+            if (totalRec) totalRec.innerText = rsvpList.length;
+            if (totalPass) totalPass.innerText = sumPasses;
+        }
+
+        function deleteRSVPRecord(id) {
+            rsvpList = rsvpList.filter(item => item.id !== id);
+            saveRSVPsToStorage();
+            showToast("Registro eliminado");
+        }
+
+        function clearAllRSVPs() {
+            if (rsvpList.length === 0) return;
+            rsvpList = [];
+            saveRSVPsToStorage();
+            showToast("Se han borrado todas las confirmaciones");
+        }
+
+        function exportRSVPToCSV() {
+            if (rsvpList.length === 0) {
+                showToast("No hay datos para exportar.");
+                return;
+            }
+
+            let csvContent = "\uFEFF";
+            csvContent += "Nombre Completo,Telefono,Pases Confirmados,Invita Ceremonia,Fecha de Registro\n";
+
+            rsvpList.forEach(item => {
+                const safeName = `"${item.name.replace(/"/g, '""')}"`;
+                const safePhone = `"${item.phone.replace(/"/g, '""')}"`;
+                csvContent += `${safeName},${safePhone},${item.passes},${item.ceremony},"${item.date}"\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `Confirmaciones_Boda_Fanny_y_Luis_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("¡Lista descargada en Excel (CSV)!");
+        }
+
         function addToCalendar() {
             const title = encodeURIComponent("Boda de Fanny & Luis 🤍");
             const details = encodeURIComponent("Boda de Fanny Michelle Guzman Rubio & Luis Barajas Martínez. Recepción 19:30 Hrs. ¡Nos vemos ahí!");
             const location = encodeURIComponent("Salón Camilas Eventos, Calz. Ventura Puente 1661, Morelia, Michoacán");
             
-            // Dates aligned with November 21
             const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261121T193000/20261122T010000&details=${details}&location=${location}`;
-            
             window.open(gCalUrl, '_blank');
         }
 
-        // Toggle Modal settings
         function toggleSettingsModal() {
             const modal = document.getElementById('settings-modal');
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
-                // Fill settings values
                 document.getElementById('set-wedding-date').value = weddingConfig.weddingDate.substring(0, 16);
                 document.getElementById('set-rsvp-deadline').value = weddingConfig.rsvpDeadline;
                 document.getElementById('set-rsvp-phone').value = weddingConfig.rsvpPhone;
-                document.getElementById('set-ceremony-venue').value = weddingConfig.ceremonyVenue;
-                document.getElementById('set-ceremony-time').value = weddingConfig.ceremonyTime;
                 document.getElementById('set-music-url').value = weddingConfig.musicUrl;
+                renderRSVPTable();
             } else {
                 modal.classList.add('hidden');
             }
         }
 
-        // Advanced Personal Link Generator for Passes + Ceremony control
+        function switchAdminTab(tab) {
+            const genTab = document.getElementById('admin-tab-generator');
+            const rsvpTab = document.getElementById('admin-tab-rsvps');
+            const genBtn = document.getElementById('tab-btn-generator');
+            const rsvpBtn = document.getElementById('tab-btn-rsvps');
+
+            if (tab === 'generator') {
+                genTab.classList.remove('hidden');
+                rsvpTab.classList.add('hidden');
+                genBtn.className = 'px-3 py-1.5 rounded-lg font-sans text-xs font-bold uppercase transition-all bg-neutralSage text-white';
+                rsvpBtn.className = 'px-3 py-1.5 rounded-lg font-sans text-xs font-bold uppercase transition-all bg-neutralCream/60 text-neutralDark hover:bg-neutralCream';
+            } else {
+                genTab.classList.add('hidden');
+                rsvpTab.classList.remove('hidden');
+                genBtn.className = 'px-3 py-1.5 rounded-lg font-sans text-xs font-bold uppercase transition-all bg-neutralCream/60 text-neutralDark hover:bg-neutralCream';
+                rsvpBtn.className = 'px-3 py-1.5 rounded-lg font-sans text-xs font-bold uppercase transition-all bg-neutralSage text-white';
+            }
+        }
+
         function generateCustomLink() {
             const baseUrl = window.location.origin + window.location.pathname;
+            const familyName = document.getElementById('gen-family-name').value.trim();
             const passes = document.getElementById('gen-passes').value;
             const inviteCeremony = document.getElementById('gen-ceremony').value;
             
             let queryParams = [];
             
-            // If specific passes are assigned, add 'p' parameter
+            if (familyName) {
+                queryParams.push(`n=${encodeURIComponent(familyName)}`);
+            }
             if (passes !== "0") {
                 queryParams.push(`p=${passes}`);
             }
-            // If ceremony invitation is set to Yes, add 'c=1'
             if (inviteCeremony === "yes") {
                 queryParams.push(`c=1`);
             }
@@ -1100,34 +1224,24 @@
             document.execCommand('copy');
             document.body.removeChild(input);
 
-            // Detailed confirmation toast
             let toastMsg = "¡Enlace copiado!";
-            if (passes !== "0" && inviteCeremony === "yes") {
-                toastMsg = `¡Copiado! Enlace con ${passes} ${passes === "1" ? 'pase' : 'pases'} + Ceremonia`;
+            if (familyName) {
+                toastMsg = `¡Copiado! Enlace personalizado para ${familyName}`;
             } else if (passes !== "0") {
-                toastMsg = `¡Copiado! Enlace con ${passes} ${passes === "1" ? 'pase' : 'pases'} (Solo Recepción)`;
-            } else if (inviteCeremony === "yes") {
-                toastMsg = "¡Copiado! Enlace estándar + Ceremonia";
-            } else {
-                toastMsg = "¡Copiado! Enlace estándar (Solo Recepción)";
+                toastMsg = `¡Copiado! Enlace delimitado a ${passes} pases`;
             }
 
             showToast(toastMsg);
         }
 
-        // Apply configuration and save persistently to localStorage (Excellent for GitHub hosting!)
         function applyConfiguration() {
             weddingConfig.weddingDate = document.getElementById('set-wedding-date').value;
             weddingConfig.rsvpDeadline = document.getElementById('set-rsvp-deadline').value;
             weddingConfig.rsvpPhone = document.getElementById('set-rsvp-phone').value;
-            weddingConfig.ceremonyVenue = document.getElementById('set-ceremony-venue').value;
-            weddingConfig.ceremonyTime = document.getElementById('set-ceremony-time').value;
             weddingConfig.musicUrl = document.getElementById('set-music-url').value;
 
-            // Save state persistently in user local browser storage
             localStorage.setItem('wedding_config_fanny_luis', JSON.stringify(weddingConfig));
 
-            // Refresh UI Elements
             applyConfigToUI();
             prepareAudioSource();
 

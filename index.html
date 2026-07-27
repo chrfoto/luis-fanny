@@ -35,9 +35,11 @@
         }
     </script>
     <style>
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
+        /* Custom scrollbar matching sage green */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -48,6 +50,7 @@
             background: #989F8D;
             border-radius: 3px;
         }
+        /* Elegant Animations */
         .fade-in-up {
             animation: fadeInUp 1.2s ease-out forwards;
         }
@@ -61,6 +64,7 @@
                 transform: translateY(0);
             }
         }
+        /* Leaf falling effect in background */
         .leaf {
             position: absolute;
             pointer-events: none;
@@ -77,6 +81,7 @@
                 left: calc(5% + 90% * var(--random-x));
             }
         }
+        /* Pulsing audio wave */
         .audio-wave span {
             display: inline-block;
             width: 3px;
@@ -92,22 +97,29 @@
             0% { transform: scaleY(0.3); }
             100% { transform: scaleY(1.5); }
         }
+        /* Custom Premium Texture Background from Imgur */
         .textured-bg {
             background-image: linear-gradient(rgba(251, 251, 250, 0.93), rgba(251, 251, 250, 0.93)), url('https://i.imgur.com/r035ySS.jpg');
             background-repeat: repeat;
         }
     </style>
 </head>
+
 <body class="bg-neutralCream text-neutralDark font-sans relative overflow-x-hidden min-h-screen">
 
+    <!-- Ambient falling leaves -->
     <div id="leaves-container" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
 
+    <!-- AUDIO PLAYER ELEMENT WITH STREAMABLE DROPBOX MP3 -->
     <audio id="bg-music" loop preload="auto">
         <source src="" id="audio-source" type="audio/mpeg">
     </audio>
 
+    <!-- 1. ENVELOPE / SCREEN SAVER SPLASH (OPENING CRUTCH) -->
     <div id="envelope-screen" class="fixed inset-0 z-50 bg-neutralCream flex flex-col justify-center items-center px-6 transition-all duration-1000 ease-in-out">
+        <!-- Delicate Frame -->
         <div class="border border-neutralSand/60 p-8 max-w-md w-full text-center bg-neutralWhite rounded-2xl shadow-xl flex flex-col justify-center items-center relative overflow-hidden">
+            <!-- Watercolor foliage decorations (Inline SVG) -->
             <div class="absolute -top-6 -right-6 text-neutralSage/20 w-32 h-32">
                 <svg viewBox="0 0 100 100" class="fill-current"><path d="M50,0 C65,20 80,30 100,50 C80,60 60,60 50,100 C40,60 20,60 0,50 C20,30 35,20 50,0 Z"></path></svg>
             </div>
@@ -132,11 +144,13 @@
         </div>
     </div>
 
+    <!-- NOTIFICATION POPUP (Replaces Native Alert) -->
     <div id="toast" class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-neutralDark text-neutralWhite px-6 py-3 rounded-full text-sm font-medium shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
         <i class="fa-solid fa-circle-check text-neutralRose"></i>
         <span id="toast-message">Copiado al portapapeles</span>
     </div>
 
+    <!-- MAIN APP WRAPPER (Hidden until "Abrir" is clicked) -->
     <div id="main-content" class="opacity-0 transition-opacity duration-1000 max-w-lg mx-auto bg-neutralWhite min-h-screen shadow-2xl relative border-x border-neutralSand/30 pb-20 textured-bg">
         
         <!-- Music Floating Control -->
@@ -268,34 +282,27 @@
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-place-of-worship"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">La Celebración</h3>
 
+            <!-- Dynamic Religious Ceremony Card -->
             <div id="religious-ceremony-card" class="bg-neutralWhite rounded-3xl p-8 max-w-md mx-auto shadow-md border border-neutralSand/30 space-y-6 relative z-10 backdrop-blur-sm mb-8 hidden">
                 <div class="absolute top-0 right-4 transform -translate-y-1/2 bg-neutralRose text-white text-[9px] font-sans font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
                     Ceremonia Religiosa
                 </div>
                 <div>
-                    <h4 id="ceremony-venue-display" class="font-serifTitle text-xl text-neutralDark font-bold">Templo de San José</h4>
+                    <h4 id="ceremony-venue-display" class="font-serifTitle text-xl text-neutralDark font-bold">Salón Camilas</h4>
                     <div class="w-12 h-[1px] bg-neutralRose mx-auto my-3"></div>
                     <p class="font-sans text-sm text-neutralDark/80 font-medium">
-                        Calz. Ventura Puente (Frente al Jardín)<br>
+                        Calz. Ventura Puente 1661<br>
                         Morelia, Michoacán
                     </p>
                 </div>
 
                 <div class="bg-neutralCream/40 rounded-xl py-3 px-4 inline-block">
-                    <p id="ceremony-time-display" class="font-serifTitle text-lg text-neutralSage font-bold">18:00 Horas</p>
+                    <p id="ceremony-time-display" class="font-serifTitle text-lg text-neutralSage font-bold">17:30 Horas</p>
                     <p class="font-sans text-[10px] text-neutralDark/60 uppercase tracking-widest font-semibold mt-0.5">Solemne Misa</p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-                    <a href="https://maps.google.com/?q=Templo+de+San+Jose+Morelia" 
-                       target="_blank" 
-                       class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-neutralSage text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:bg-neutralDark hover:shadow-md">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        Ver Templo
-                    </a>
                 </div>
             </div>
 
+            <!-- Reception Card (Always Visible) -->
             <div class="bg-neutralWhite rounded-3xl p-8 max-w-md mx-auto shadow-md border border-neutralSand/30 space-y-6 relative z-10 backdrop-blur-sm">
                 <div class="absolute top-0 right-4 transform -translate-y-1/2 bg-neutralSage text-white text-[9px] font-sans font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
                     Recepción y Fiesta
@@ -535,6 +542,7 @@
 
     </div>
 
+    <!-- Admin Panel -->
     <div id="settings-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 hidden transition-all duration-300">
         <div class="bg-neutralWhite rounded-3xl p-6 max-w-xl w-full shadow-2xl border border-neutralSand max-h-[92vh] overflow-y-auto space-y-5">
             
@@ -623,6 +631,20 @@
                                class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
                     </div>
 
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="set-ceremony-venue" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Lugar de Ceremonia</label>
+                            <input type="text" id="set-ceremony-venue" value="Salón Camilas"
+                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                        </div>
+
+                        <div>
+                            <label for="set-ceremony-time" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Hora de Ceremonia</label>
+                            <input type="text" id="set-ceremony-time" value="17:30 Horas"
+                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
+                        </div>
+                    </div>
+
                     <div>
                         <label for="set-music-url" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Enlace MP3 de Música</label>
                         <input type="text" id="set-music-url" value="https://www.dropbox.com/scl/fi/3vs1w0yui1qxcqyrfw546/Enchanted.mp3?rlkey=vrq78dkm8obucrwam552ch6yt&st=55hv8ofb&dl=1"
@@ -691,8 +713,8 @@
             heroImg: "https://i.imgur.com/rWrSAKy.jpg",
             countdownBg: "https://i.imgur.com/2EALzbm.jpg",
             musicUrl: "https://www.dropbox.com/scl/fi/3vs1w0yui1qxcqyrfw546/Enchanted.mp3?rlkey=vrq78dkm8obucrwam552ch6yt&st=55hv8ofb&dl=1",
-            ceremonyVenue: "Templo de San José",
-            ceremonyTime: "18:00 Horas",
+            ceremonyVenue: "Salón Camilas",
+            ceremonyTime: "17:30 Horas",
             galleryImages: [
                 "https://i.imgur.com/sYHjuQX.jpg",
                 "https://i.imgur.com/7iKWNaJ.jpg",
@@ -1170,6 +1192,8 @@
                 document.getElementById('set-wedding-date').value = weddingConfig.weddingDate.substring(0, 16);
                 document.getElementById('set-rsvp-deadline').value = weddingConfig.rsvpDeadline;
                 document.getElementById('set-rsvp-phone').value = weddingConfig.rsvpPhone;
+                document.getElementById('set-ceremony-venue').value = weddingConfig.ceremonyVenue;
+                document.getElementById('set-ceremony-time').value = weddingConfig.ceremonyTime;
                 document.getElementById('set-music-url').value = weddingConfig.musicUrl;
                 renderRSVPTable();
             } else {
@@ -1238,6 +1262,8 @@
             weddingConfig.weddingDate = document.getElementById('set-wedding-date').value;
             weddingConfig.rsvpDeadline = document.getElementById('set-rsvp-deadline').value;
             weddingConfig.rsvpPhone = document.getElementById('set-rsvp-phone').value;
+            weddingConfig.ceremonyVenue = document.getElementById('set-ceremony-venue').value;
+            weddingConfig.ceremonyTime = document.getElementById('set-ceremony-time').value;
             weddingConfig.musicUrl = document.getElementById('set-music-url').value;
 
             localStorage.setItem('wedding_config_fanny_luis', JSON.stringify(weddingConfig));

@@ -173,7 +173,9 @@
         <!-- Fullscreen Hero Cover -->
         <header class="relative w-full h-screen flex flex-col justify-between items-center text-center overflow-hidden z-20">
             <div id="hero-img-bg" class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 scale-100" style="background-image: url('https://i.imgur.com/rWrSAKy.jpg');"></div>
-            <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/10 to-neutralWhite"></div>
+            <!-- Gradient overlays to blend into the next section -->
+            <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/10 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-40 z-10 bg-gradient-to-t from-neutralWhite to-transparent"></div>
 
             <div class="relative z-20 pt-14 px-6 w-full">
                 <p class="font-sans text-[10px] tracking-[0.5em] uppercase text-neutralWhite font-semibold drop-shadow-md">¡Nuestra Boda!</p>
@@ -205,10 +207,11 @@
         </header>
 
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/JnKqboY.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-b from-neutralWhite via-transparent to-transparent"></div>
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
         </div>
 
-        <section class="py-12 px-6 text-center bg-transparent">
+        <section class="py-12 px-6 text-center bg-transparent relative z-10">
             <div class="max-w-md mx-auto bg-neutralWhite/95 px-6 py-6 rounded-2xl border border-neutralSand/30 shadow-md relative backdrop-blur-sm">
                 <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-3 py-0.5 bg-neutralSage text-white text-[9px] tracking-widest uppercase font-semibold border border-neutralSand/40 rounded-full">Nuestra Inspiración</span>
                 <p class="font-serifBody italic text-xl text-neutralDark/90 pt-2 leading-relaxed">
@@ -218,8 +221,12 @@
             </div>
         </section>
 
-        <section id="countdown-section" class="relative py-16 px-6 text-center border-y border-neutralSand/20 bg-cover bg-center overflow-hidden" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
+        <section id="countdown-section" class="relative py-16 px-6 text-center bg-cover bg-center overflow-hidden" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
             <div class="absolute inset-0 bg-neutralCream/85 backdrop-blur-[1px]"></div>
+            
+            <!-- Degradados para transición suave superior e inferior -->
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent z-0"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent z-0"></div>
             
             <div class="relative z-10">
                 <h3 class="font-serifTitle text-xs tracking-[0.25em] text-neutralSage uppercase mb-6 font-bold">Faltan Sólo</h3>
@@ -249,9 +256,12 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/SScy16B.jpg');"></div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/SScy16B.jpg');">
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+        </div>
 
-        <section class="py-16 px-8 text-center bg-transparent relative">
+        <section class="py-16 px-8 text-center bg-transparent relative z-10">
             <span class="text-neutralSage text-xl opacity-80"><i class="fa-solid fa-dove"></i></span>
             <h3 class="font-serifTitle text-xl text-neutralDark mt-2 mb-8 tracking-wider">Con la bendición de nuestros padres</h3>
 
@@ -276,9 +286,12 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/c4KREX6.jpg');"></div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/c4KREX6.jpg');">
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+        </div>
 
-        <section class="py-16 px-6 bg-transparent text-center relative overflow-hidden">
+        <section class="py-16 px-6 bg-transparent text-center relative overflow-hidden z-10">
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-place-of-worship"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">La Celebración</h3>
 
@@ -298,7 +311,7 @@
 
                 <div class="bg-neutralCream/40 rounded-xl py-3 px-4 inline-block">
                     <p id="ceremony-time-display" class="font-serifTitle text-lg text-neutralSage font-bold">17:30 Horas</p>
-                    <p class="font-sans text-[10px] text-neutralDark/60 uppercase tracking-widest font-semibold mt-0.5">Solemne Misa</p>
+                    <p class="font-sans text-[10px] text-neutralDark/60 uppercase tracking-widest font-semibold mt-0.5">Solemne Culto</p>
                 </div>
             </div>
 
@@ -338,9 +351,12 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/5C6F61g.jpg');"></div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/5C6F61g.jpg');">
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+        </div>
 
-        <section class="py-16 px-8 bg-transparent relative">
+        <section class="py-16 px-8 bg-transparent relative z-10">
             <div class="text-center mb-12">
                 <span class="text-neutralRose text-xl opacity-80"><i class="fa-solid fa-clock"></i></span>
                 <h3 class="font-serifTitle text-2xl text-neutralDark mt-2 tracking-wide">Itinerario de Celebración</h3>
@@ -402,9 +418,12 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');"></div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+        </div>
 
-        <section class="py-16 px-6 bg-transparent text-center relative">
+        <section class="py-16 px-6 bg-transparent text-center relative z-10">
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-user-tie"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">Código de Vestimenta</h3>
 
@@ -478,9 +497,12 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/bKVelzR.jpg');"></div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/bKVelzR.jpg');">
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+        </div>
 
-        <section class="py-16 px-6 bg-transparent text-center relative border-t border-neutralSand/20">
+        <section class="py-16 px-6 bg-transparent text-center relative border-t border-neutralSand/20 z-10">
             <span class="text-neutralRose text-2xl opacity-80"><i class="fa-solid fa-envelope-open-text"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-2 tracking-wide">Confirmación de Asistencia</h3>
             

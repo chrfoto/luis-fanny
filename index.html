@@ -607,55 +607,6 @@
                         <i class="fa-solid fa-copy"></i> Generar y Copiar Enlace
                     </button>
                 </div>
-
-                <div class="space-y-3 pt-2 border-t border-neutralSand/40">
-                    <span class="block font-sans text-[11px] uppercase tracking-wider text-neutralSage font-bold">Ajustes Generales del Evento</span>
-                    
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label for="set-wedding-date" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Fecha de la Boda</label>
-                            <input type="datetime-local" id="set-wedding-date" value="2026-11-21T19:30"
-                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                        </div>
-
-                        <div>
-                            <label for="set-rsvp-deadline" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Límite de Confirmación</label>
-                            <input type="date" id="set-rsvp-deadline" value="2026-11-14"
-                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="set-rsvp-phone" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Celular / Contacto Novios</label>
-                        <input type="text" id="set-rsvp-phone" value="4431011723"
-                               class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label for="set-ceremony-venue" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Lugar de Ceremonia</label>
-                            <input type="text" id="set-ceremony-venue" value="Salón Camilas"
-                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                        </div>
-
-                        <div>
-                            <label for="set-ceremony-time" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Hora de Ceremonia</label>
-                            <input type="text" id="set-ceremony-time" value="17:30 Horas"
-                                   class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="set-music-url" class="block font-sans text-[9px] uppercase text-neutralDark/60 font-semibold mb-1">Enlace MP3 de Música</label>
-                        <input type="text" id="set-music-url" value="https://www.dropbox.com/scl/fi/3vs1w0yui1qxcqyrfw546/Enchanted.mp3?rlkey=vrq78dkm8obucrwam552ch6yt&st=55hv8ofb&dl=1"
-                               class="w-full px-3 py-2 rounded-xl border border-neutralSand font-sans text-xs bg-neutralWhite text-neutralDark">
-                    </div>
-
-                    <button onclick="applyConfiguration()"
-                            class="w-full py-3 bg-neutralSage text-white font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-neutralDark transition-colors">
-                        Guardar Cambios de Configuración
-                    </button>
-                </div>
             </div>
 
             <!-- Tab 2: RSVP Table & Export -->
@@ -1206,12 +1157,6 @@
             const modal = document.getElementById('settings-modal');
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
-                document.getElementById('set-wedding-date').value = weddingConfig.weddingDate.substring(0, 16);
-                document.getElementById('set-rsvp-deadline').value = weddingConfig.rsvpDeadline;
-                document.getElementById('set-rsvp-phone').value = weddingConfig.rsvpPhone;
-                document.getElementById('set-ceremony-venue').value = weddingConfig.ceremonyVenue;
-                document.getElementById('set-ceremony-time').value = weddingConfig.ceremonyTime;
-                document.getElementById('set-music-url').value = weddingConfig.musicUrl;
                 renderRSVPTable();
             } else {
                 modal.classList.add('hidden');
@@ -1273,29 +1218,6 @@
             }
 
             showToast(toastMsg);
-        }
-
-        function applyConfiguration() {
-            weddingConfig.weddingDate = document.getElementById('set-wedding-date').value;
-            weddingConfig.rsvpDeadline = document.getElementById('set-rsvp-deadline').value;
-            weddingConfig.rsvpPhone = document.getElementById('set-rsvp-phone').value;
-            weddingConfig.ceremonyVenue = document.getElementById('set-ceremony-venue').value;
-            weddingConfig.ceremonyTime = document.getElementById('set-ceremony-time').value;
-            weddingConfig.musicUrl = document.getElementById('set-music-url').value;
-
-            localStorage.setItem('wedding_config_fanny_luis', JSON.stringify(weddingConfig));
-
-            applyConfigToUI();
-            prepareAudioSource();
-
-            if (isMusicPlaying) {
-                const musicElement = document.getElementById('bg-music');
-                musicElement.play();
-            }
-
-            initCountdown();
-            showToast("¡Configuración Guardada Exitosamente!");
-            toggleSettingsModal();
         }
     </script>
 </body>

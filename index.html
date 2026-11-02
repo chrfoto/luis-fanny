@@ -173,9 +173,7 @@
         <!-- Fullscreen Hero Cover -->
         <header class="relative w-full h-screen flex flex-col justify-between items-center text-center overflow-hidden z-20">
             <div id="hero-img-bg" class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 scale-100" style="background-image: url('https://i.imgur.com/rWrSAKy.jpg');"></div>
-            <!-- Gradient overlays to blend into the next section -->
-            <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/10 to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-40 z-10 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/10 to-neutralWhite"></div>
 
             <div class="relative z-20 pt-14 px-6 w-full">
                 <p class="font-sans text-[10px] tracking-[0.5em] uppercase text-neutralWhite font-semibold drop-shadow-md">¡Nuestra Boda!</p>
@@ -207,11 +205,10 @@
         </header>
 
         <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/JnKqboY.jpg');">
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-neutralWhite via-transparent to-transparent"></div>
         </div>
 
-        <section class="py-12 px-6 text-center bg-transparent relative z-10">
+        <section class="py-12 px-6 text-center bg-transparent">
             <div class="max-w-md mx-auto bg-neutralWhite/95 px-6 py-6 rounded-2xl border border-neutralSand/30 shadow-md relative backdrop-blur-sm">
                 <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-3 py-0.5 bg-neutralSage text-white text-[9px] tracking-widest uppercase font-semibold border border-neutralSand/40 rounded-full">Nuestra Inspiración</span>
                 <p class="font-serifBody italic text-xl text-neutralDark/90 pt-2 leading-relaxed">
@@ -221,12 +218,8 @@
             </div>
         </section>
 
-        <section id="countdown-section" class="relative py-16 px-6 text-center bg-cover bg-center overflow-hidden" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
+        <section id="countdown-section" class="relative py-16 px-6 text-center border-y border-neutralSand/20 bg-cover bg-center overflow-hidden" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
             <div class="absolute inset-0 bg-neutralCream/85 backdrop-blur-[1px]"></div>
-            
-            <!-- Degradados para transición suave superior e inferior -->
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent z-0"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent z-0"></div>
             
             <div class="relative z-10">
                 <h3 class="font-serifTitle text-xs tracking-[0.25em] text-neutralSage uppercase mb-6 font-bold">Faltan Sólo</h3>
@@ -256,12 +249,9 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/SScy16B.jpg');">
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
-        </div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/SScy16B.jpg');"></div>
 
-        <section class="py-16 px-8 text-center bg-transparent relative z-10">
+        <section class="py-16 px-8 text-center bg-transparent relative">
             <span class="text-neutralSage text-xl opacity-80"><i class="fa-solid fa-dove"></i></span>
             <h3 class="font-serifTitle text-xl text-neutralDark mt-2 mb-8 tracking-wider">Con la bendición de nuestros padres</h3>
 
@@ -286,12 +276,9 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/c4KREX6.jpg');">
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
-        </div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/c4KREX6.jpg');"></div>
 
-        <section class="py-16 px-6 bg-transparent text-center relative overflow-hidden z-10">
+        <section class="py-16 px-6 bg-transparent text-center relative overflow-hidden">
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-place-of-worship"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">La Celebración</h3>
 
@@ -311,7 +298,7 @@
 
                 <div class="bg-neutralCream/40 rounded-xl py-3 px-4 inline-block">
                     <p id="ceremony-time-display" class="font-serifTitle text-lg text-neutralSage font-bold">17:30 Horas</p>
-                    <p class="font-sans text-[10px] text-neutralDark/60 uppercase tracking-widest font-semibold mt-0.5">Solemne Culto</p>
+                    <p class="font-sans text-[10px] text-neutralDark/60 uppercase tracking-widest font-semibold mt-0.5">Solemne Misa</p>
                 </div>
             </div>
 
@@ -351,12 +338,9 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/5C6F61g.jpg');">
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
-        </div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/5C6F61g.jpg');"></div>
 
-        <section class="py-16 px-8 bg-transparent relative z-10">
+        <section class="py-16 px-8 bg-transparent relative">
             <div class="text-center mb-12">
                 <span class="text-neutralRose text-xl opacity-80"><i class="fa-solid fa-clock"></i></span>
                 <h3 class="font-serifTitle text-2xl text-neutralDark mt-2 tracking-wide">Itinerario de Celebración</h3>
@@ -418,12 +402,9 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');">
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
-        </div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/2EALzbm.jpg');"></div>
 
-        <section class="py-16 px-6 bg-transparent text-center relative z-10">
+        <section class="py-16 px-6 bg-transparent text-center relative">
             <span class="text-neutralSage text-2xl opacity-80"><i class="fa-solid fa-user-tie"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-6 tracking-wide">Código de Vestimenta</h3>
 
@@ -497,12 +478,9 @@
             </div>
         </section>
 
-        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/bKVelzR.jpg');">
-            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-neutralWhite to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutralWhite to-transparent"></div>
-        </div>
+        <div class="w-full h-72 sm:h-96 bg-cover bg-center relative shadow-inner" style="background-image: url('https://i.imgur.com/bKVelzR.jpg');"></div>
 
-        <section class="py-16 px-6 bg-transparent text-center relative border-t border-neutralSand/20 z-10">
+        <section class="py-16 px-6 bg-transparent text-center relative border-t border-neutralSand/20">
             <span class="text-neutralRose text-2xl opacity-80"><i class="fa-solid fa-envelope-open-text"></i></span>
             <h3 class="font-serifTitle text-2xl text-neutralDark mt-3 mb-2 tracking-wide">Confirmación de Asistencia</h3>
             
@@ -570,7 +548,7 @@
             
             <div class="flex justify-between items-center pb-2 border-b border-neutralSand">
                 <h3 class="font-serifTitle text-lg text-neutralDark font-semibold flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-neutralSage"></i> Panel de Administración
+                    <i class="fa-solid fa-sliders text-neutralSage"></i> Panel de Administración (Firebase Cloud)
                 </h3>
                 <button onclick="toggleSettingsModal()" class="w-8 h-8 rounded-full bg-neutralCream flex items-center justify-center text-neutralDark hover:bg-neutralSage hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark"></i>
@@ -684,7 +662,7 @@
             <div id="admin-tab-rsvps" class="hidden space-y-4">
                 <div class="flex justify-between items-center bg-neutralCream/30 p-3 rounded-2xl border border-neutralSand/40">
                     <div>
-                        <p class="font-sans text-xs font-bold text-neutralDark">Resumen de Asistencia</p>
+                        <p class="font-sans text-xs font-bold text-neutralDark">Resumen de Asistencia en la Nube (Firestore)</p>
                         <p class="font-sans text-[10px] text-neutralDark/70 mt-0.5">
                             Total Registros: <strong id="summary-total-records">0</strong> | Total Pases Solic.: <strong id="summary-total-passes">0</strong>
                         </p>
@@ -694,10 +672,6 @@
                         <i class="fa-solid fa-file-excel"></i> Descargar Excel (CSV)
                     </button>
                 </div>
-
-                <p class="font-sans text-[10px] text-neutralDark/60 italic">
-                    * Nota: Las confirmaciones enviadas también se remiten a <code>drdeckofficial@gmail.com</code> para notificación inmediata.
-                </p>
 
                 <div class="border border-neutralSand/50 rounded-2xl overflow-x-auto max-h-60 bg-neutralWhite">
                     <table class="w-full text-left font-sans text-xs">
@@ -717,15 +691,194 @@
                 </div>
 
                 <div class="flex justify-between items-center pt-2">
-                    <button onclick="clearAllRSVPs()" class="text-[10px] text-red-500 hover:text-red-700 font-bold uppercase underline">
-                        Borrar todas las confirmaciones
-                    </button>
-                    <span class="text-[9px] text-neutralDark/50 uppercase tracking-widest">Sincronizado Local</span>
+                    <span class="text-[9px] text-neutralSage uppercase tracking-widest font-bold">☁️ Conectado a Firebase Firestore</span>
                 </div>
             </div>
 
         </div>
     </div>
+
+    <!-- Firebase SDK Imports -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDsRwwnpQT_OM-GkMGChrZtghnqve4RQvo",
+            authDomain: "fanny-y-luis.firebaseapp.com",
+            projectId: "fanny-y-luis",
+            storageBucket: "fanny-y-luis.firebasestorage.app",
+            messagingSenderId: "330114044532",
+            appId: "1:330114044532:web:f217e2f16c9ff9c2c87721"
+        };
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'fanny-luis-wedding';
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        let rsvpList = [];
+
+        window.submitDirectRSVP = async function() {
+            const name = document.getElementById('rsvp-name').value.trim();
+            const phone = document.getElementById('rsvp-phone').value.trim();
+            const guests = document.getElementById('rsvp-guests').value;
+
+            if (!name) {
+                showToast("Por favor, introduce tu Nombre Completo.");
+                document.getElementById('rsvp-name').focus();
+                return;
+            }
+
+            if (!phone || phone.length < 8) {
+                showToast("Por favor, ingresa tu número de teléfono.");
+                document.getElementById('rsvp-phone').focus();
+                return;
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const includesCeremony = urlParams.get('c') === '1' ? 'Sí' : 'No';
+
+            const newRecord = {
+                name: name,
+                phone: phone,
+                passes: parseInt(guests),
+                ceremony: includesCeremony,
+                date: new Date().toLocaleString('es-MX'),
+                createdAt: Date.now()
+            };
+
+            try {
+                if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                }
+
+                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+                await addDoc(colRef, newRecord);
+
+                localStorage.setItem('wedding_rsvp_submitted_fanny_luis', 'true');
+
+                document.getElementById('rsvp-form-card').classList.add('hidden');
+                document.getElementById('rsvp-success-card').classList.remove('hidden');
+
+                showToast("¡Confirmación Registrada en la Nube!");
+            } catch (err) {
+                console.error("Error writing to Firestore:", err);
+                showToast("Error al guardar. Intenta de nuevo.");
+            }
+        };
+
+        window.deleteRSVPRecord = async function(docId) {
+            try {
+                if (!auth.currentUser) await signInAnonymously(auth);
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'rsvps', docId);
+                await deleteDoc(docRef);
+                showToast("Registro eliminado de la nube");
+            } catch (err) {
+                console.error("Error deleting document:", err);
+                showToast("No se pudo eliminar.");
+            }
+        };
+
+        window.exportRSVPToCSV = function() {
+            if (rsvpList.length === 0) {
+                showToast("No hay datos para exportar.");
+                return;
+            }
+
+            let csvContent = "\uFEFF";
+            csvContent += "Nombre Completo,Telefono,Pases Confirmados,Invita Ceremonia,Fecha de Registro\n";
+
+            rsvpList.forEach(item => {
+                const safeName = `"${(item.name || '').replace(/"/g, '""')}"`;
+                const safePhone = `"${(item.phone || '').replace(/"/g, '""')}"`;
+                csvContent += `${safeName},${safePhone},${item.passes},${item.ceremony},"${item.date}"\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `Confirmaciones_Boda_Fanny_y_Luis_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("¡Lista descargada en Excel (CSV)!");
+        };
+
+        window.renderRSVPTable = function() {
+            const tbody = document.getElementById('rsvp-table-body');
+            const badge = document.getElementById('rsvp-count-badge');
+            const totalRec = document.getElementById('summary-total-records');
+            const totalPass = document.getElementById('summary-total-passes');
+
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+            let sumPasses = 0;
+
+            if (rsvpList.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-neutralDark/50 italic">No hay confirmaciones registradas en la nube aún.</td></tr>`;
+            } else {
+                rsvpList.forEach((item, index) => {
+                    sumPasses += (item.passes || 0);
+                    const tr = document.createElement('tr');
+                    tr.className = index % 2 === 0 ? 'bg-white' : 'bg-neutralCream/20';
+                    tr.innerHTML = `
+                        <td class="p-2.5 font-semibold">${item.name}</td>
+                        <td class="p-2.5">${item.phone}</td>
+                        <td class="p-2.5 text-center font-bold text-neutralSage">${item.passes}</td>
+                        <td class="p-2.5 text-center">${item.ceremony === 'Sí' ? '✨ Sí' : 'No'}</td>
+                        <td class="p-2.5 text-[10px] text-neutralDark/70">${item.date}</td>
+                        <td class="p-2.5 text-center">
+                            <button onclick="deleteRSVPRecord('${item.id}')" class="text-red-400 hover:text-red-600 p-1" title="Eliminar">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            if (badge) badge.innerText = rsvpList.length;
+            if (totalRec) totalRec.innerText = rsvpList.length;
+            if (totalPass) totalPass.innerText = sumPasses;
+        };
+
+        async function initFirebaseRealtimeSync() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                if (!auth.currentUser) return;
+
+                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+                
+                onSnapshot(colRef, (snapshot) => {
+                    rsvpList = [];
+                    snapshot.forEach((docSnap) => {
+                        rsvpList.push({ id: docSnap.id, ...docSnap.data() });
+                    });
+                    rsvpList.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                    renderRSVPTable();
+                }, (error) => {
+                    console.error("Firestore snapshot error:", error);
+                });
+
+            } catch (err) {
+                console.error("Firebase auth/sync initialization error:", err);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initFirebaseRealtimeSync();
+        });
+    </script>
 
     <script>
         let weddingConfig = {
@@ -755,11 +908,9 @@
         let isMusicPlaying = false;
         let currentGalleryIndex = 0;
         const totalGallerySlides = 10; 
-        let rsvpList = [];
 
         window.addEventListener('DOMContentLoaded', () => {
             loadSavedSettings();
-            loadSavedRSVPs();
             initLeaves();
             initCountdown();
             checkGuestParameters();
@@ -1040,162 +1191,6 @@
                 toast.classList.remove('opacity-100');
                 toast.classList.add('opacity-0', 'pointer-events-none');
             }, 3000);
-        }
-
-        function submitDirectRSVP() {
-            const name = document.getElementById('rsvp-name').value.trim();
-            const phone = document.getElementById('rsvp-phone').value.trim();
-            const guests = document.getElementById('rsvp-guests').value;
-
-            if (!name) {
-                showToast("Por favor, introduce tu Nombre Completo.");
-                document.getElementById('rsvp-name').focus();
-                return;
-            }
-
-            if (!phone || phone.length < 8) {
-                showToast("Por favor, ingresa tu número de teléfono.");
-                document.getElementById('rsvp-phone').focus();
-                return;
-            }
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const includesCeremony = urlParams.get('c') === '1' ? 'Sí' : 'No';
-
-            const newRecord = {
-                id: Date.now(),
-                name: name,
-                phone: phone,
-                passes: parseInt(guests),
-                ceremony: includesCeremony,
-                date: new Date().toLocaleString('es-MX')
-            };
-
-            rsvpList.push(newRecord);
-            saveRSVPsToStorage();
-
-            localStorage.setItem('wedding_rsvp_submitted_fanny_luis', 'true');
-
-            try {
-                fetch("https://formsubmit.co/ajax/drdeckofficial@gmail.com", {
-                    method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _subject: `Nueva Confirmación Boda: ${name}`,
-                        Nombre: name,
-                        Telefono: phone,
-                        Pases_Confirmados: guests,
-                        Invita_Ceremonia: includesCeremony,
-                        Fecha_Registro: newRecord.date
-                    })
-                }).catch(err => console.log("Background email submission error", err));
-            } catch(e) {
-                console.log("Submit silent fail", e);
-            }
-
-            document.getElementById('rsvp-form-card').classList.add('hidden');
-            document.getElementById('rsvp-success-card').classList.remove('hidden');
-
-            showToast("¡Confirmación Registrada!");
-        }
-
-        function loadSavedRSVPs() {
-            const stored = localStorage.getItem('wedding_rsvps_list_fanny_luis');
-            if (stored) {
-                try {
-                    rsvpList = JSON.parse(stored);
-                } catch(e) {
-                    rsvpList = [];
-                }
-            }
-            renderRSVPTable();
-        }
-
-        function saveRSVPsToStorage() {
-            localStorage.setItem('wedding_rsvps_list_fanny_luis', JSON.stringify(rsvpList));
-            renderRSVPTable();
-        }
-
-        function renderRSVPTable() {
-            const tbody = document.getElementById('rsvp-table-body');
-            const badge = document.getElementById('rsvp-count-badge');
-            const totalRec = document.getElementById('summary-total-records');
-            const totalPass = document.getElementById('summary-total-passes');
-
-            if (!tbody) return;
-
-            tbody.innerHTML = '';
-            let sumPasses = 0;
-
-            if (rsvpList.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-neutralDark/50 italic">No hay confirmaciones registradas aún.</td></tr>`;
-            } else {
-                rsvpList.forEach((item, index) => {
-                    sumPasses += (item.passes || 0);
-                    const tr = document.createElement('tr');
-                    tr.className = index % 2 === 0 ? 'bg-white' : 'bg-neutralCream/20';
-                    tr.innerHTML = `
-                        <td class="p-2.5 font-semibold">${item.name}</td>
-                        <td class="p-2.5">${item.phone}</td>
-                        <td class="p-2.5 text-center font-bold text-neutralSage">${item.passes}</td>
-                        <td class="p-2.5 text-center">${item.ceremony === 'Sí' ? '✨ Sí' : 'No'}</td>
-                        <td class="p-2.5 text-[10px] text-neutralDark/70">${item.date}</td>
-                        <td class="p-2.5 text-center">
-                            <button onclick="deleteRSVPRecord(${item.id})" class="text-red-400 hover:text-red-600 p-1" title="Eliminar">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            }
-
-            if (badge) badge.innerText = rsvpList.length;
-            if (totalRec) totalRec.innerText = rsvpList.length;
-            if (totalPass) totalPass.innerText = sumPasses;
-        }
-
-        function deleteRSVPRecord(id) {
-            rsvpList = rsvpList.filter(item => item.id !== id);
-            saveRSVPsToStorage();
-            showToast("Registro eliminado");
-        }
-
-        function clearAllRSVPs() {
-            if (rsvpList.length === 0) return;
-            rsvpList = [];
-            saveRSVPsToStorage();
-            showToast("Se han borrado todas las confirmaciones");
-        }
-
-        function exportRSVPToCSV() {
-            if (rsvpList.length === 0) {
-                showToast("No hay datos para exportar.");
-                return;
-            }
-
-            let csvContent = "\uFEFF";
-            csvContent += "Nombre Completo,Telefono,Pases Confirmados,Invita Ceremonia,Fecha de Registro\n";
-
-            rsvpList.forEach(item => {
-                const safeName = `"${item.name.replace(/"/g, '""')}"`;
-                const safePhone = `"${item.phone.replace(/"/g, '""')}"`;
-                csvContent += `${safeName},${safePhone},${item.passes},${item.ceremony},"${item.date}"\n`;
-            });
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", `Confirmaciones_Boda_Fanny_y_Luis_${new Date().toISOString().slice(0,10)}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            showToast("¡Lista descargada en Excel (CSV)!");
         }
 
         function addToCalendar() {
